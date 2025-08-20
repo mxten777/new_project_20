@@ -1,0 +1,134 @@
+import React, { useState, useEffect } from "react";
+
+export type UserProfile = {
+  name: string;
+  age: string;
+  familyType: string;
+  incomeLevel: string;
+  region: string;
+};
+
+const LOCAL_KEY = 'userProfile';
+const initialProfile: UserProfile = {
+  name: "",
+  age: "",
+  familyType: "",
+  incomeLevel: "",
+  region: "",
+};
+
+const familyTypes = ["1인가구", "부부", "가족", "한부모", "기타"];
+const incomeLevels = ["저소득", "중간", "고소득"];
+const regions = ["서울", "경기", "부산", "대구", "광주", "기타"];
+
+export default function UserProfileForm({ onSubmit }: { onSubmit: (profile: UserProfile) => void }) {
+  const [profile, setProfile] = useState<UserProfile>(initialProfile);
+  const [submitted, setSubmitted] = useState(false);
+  const [editing, setEditing] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  // LocalStorage에서 불러오기
+  useEffect(() => {
+    const saved = localStorage.getItem(LOCAL_KEY);
+    if (saved) {
+      setProfile(JSON.parse(saved));
+    }
+  }, []);
+
+  // 입력값 변경 시 LocalStorage에 저장
+  useEffect(() => {
+    localStorage.setItem(LOCAL_KEY, JSON.stringify(profile));
+  }, [profile]);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setProfile((prev) => ({ ...prev, [name]: value }));
+    setEditing(true);
+  };
+
+  const validate = () => {
+    if (profile.name.trim().length < 2) return '이름은 2자 이상 입력하세요.';
+    const ageNum = Number(profile.age);
+    if (!profile.age || isNaN(ageNum) || ageNum < 0 || ageNum > 120) return '나이는 0~120 사이의 숫자여야 합니다.';
+    if (!profile.familyType) return '가구 유형을 선택하세요.';
+    if (!profile.incomeLevel) return '소득 수준을 선택하세요.';
+    if (!profile.region) return '지역을 선택하세요.';
+    return null;
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const err = validate();
+    if (err) {
+      setError(err);
+      return;
+    }
+    setError(null);
+    setSubmitted(true);
+    setEditing(false);
+    onSubmit(profile);
+    setTimeout(() => setSubmitted(false), 2000);
+  };
+
+  const handleReset = () => {
+    setProfile(initialProfile);
+    setEditing(true);
+    setError(null);
+    localStorage.removeItem(LOCAL_KEY);
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="max-w-lg w-full mx-auto bg-white p-10 rounded-3xl shadow-2xl space-y-8 mt-12 border-2 border-blue-100 animate-fadeInUp">
+      <h2 className="text-4xl font-extrabold mb-8 text-center text-blue-700 tracking-tight flex items-center justify-center gap-2">
+        <span className="inline-block bg-gradient-to-r from-blue-400 to-purple-400 text-white text-2xl font-bold px-3 py-1 rounded-full shadow">👤</span>
+        사용자 정보 입력
+      </h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div>
+          <label className="block mb-2 font-semibold text-gray-700">이름</label>
+          <input name="name" value={profile.name} onChange={handleChange} placeholder="홍길동" className="w-full border-2 border-blue-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-300 text-lg transition" required />
+        </div>
+        <div>
+          <label className="block mb-2 font-semibold text-gray-700">나이</label>
+          <input name="age" type="number" value={profile.age} onChange={handleChange} placeholder="예) 35" min="0" className="w-full border-2 border-blue-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-300 text-lg transition" required />
+        </div>
+        <div>
+          <label className="block mb-2 font-semibold text-gray-700">가구 유형</label>
+          <select name="familyType" value={profile.familyType} onChange={handleChange} className="w-full border-2 border-blue-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-300 text-lg transition" required>
+            <option value="">선택</option>
+            {familyTypes.map((type) => (
+              <option key={type} value={type}>{type}</option>
+            ))}
+          </select>
+        </div>
+        <div>
+          <label className="block mb-2 font-semibold text-gray-700">소득 수준</label>
+          <select name="incomeLevel" value={profile.incomeLevel} onChange={handleChange} className="w-full border-2 border-blue-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-300 text-lg transition" required>
+            <option value="">선택</option>
+            {incomeLevels.map((level) => (
+              <option key={level} value={level}>{level}</option>
+            ))}
+          </select>
+        </div>
+        <div className="md:col-span-2">
+          <label className="block mb-2 font-semibold text-gray-700">지역</label>
+          <select name="region" value={profile.region} onChange={handleChange} className="w-full border-2 border-blue-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-300 text-lg transition" required>
+            <option value="">선택</option>
+            {regions.map((region) => (
+              <option key={region} value={region}>{region}</option>
+            ))}
+          </select>
+        </div>
+      </div>
+      <div className="flex gap-4 mt-6">
+        <button type="submit" className="flex-1 bg-gradient-to-r from-blue-500 to-purple-500 text-white py-3 rounded-xl hover:from-blue-600 hover:to-purple-600 font-bold text-lg shadow-lg transition-all duration-150">{editing ? '저장하기' : '수정하기'}</button>
+        <button type="button" onClick={handleReset} className="flex-1 bg-gray-100 text-gray-700 py-3 rounded-xl font-bold text-lg shadow-md transition hover:bg-gray-200">초기화</button>
+      </div>
+      {error && <div className="text-red-600 text-center font-semibold mt-2 animate-shake">{error}</div>}
+      {submitted && (
+        <div className="text-green-600 text-center font-semibold mt-2 animate-pulse">저장되었습니다!</div>
+      )}
+      <div className="text-center text-gray-400 text-sm mt-4">입력하신 정보는 오직 맞춤형 복지 추천에만 사용됩니다.</div>
+    </form>
+  );
+}
