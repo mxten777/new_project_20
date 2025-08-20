@@ -26,10 +26,10 @@ export default function MobileNav() {
         >
           <FaTimes />
         </button>
-        <Link to="/" className="flex items-center gap-2 text-xl text-white font-bold hover:underline" onClick={() => setOpen(false)}><FaHome /> 홈</Link>
-        <Link to="/profile" className="flex items-center gap-2 text-xl text-white font-bold hover:underline" onClick={() => setOpen(false)}><FaUserAlt /> 프로필</Link>
-        <Link to="/recommend" className="flex items-center gap-2 text-xl text-white font-bold hover:underline" onClick={() => setOpen(false)}><FaStar /> 추천</Link>
-        <Link to="/favorites" className="flex items-center gap-2 text-xl text-white font-bold hover:underline" onClick={() => setOpen(false)}><FaRegHeart /> 즐겨찾기</Link>
+    <Link to="/" className="flex items-center gap-3 text-xl text-primary font-extrabold hover:text-accent-yellow transition" onClick={() => setOpen(false)}><FaHome className="text-2xl" /> 홈</Link>
+    <Link to="/profile" className="flex items-center gap-3 text-xl text-primary font-extrabold hover:text-accent-yellow transition" onClick={() => setOpen(false)}><FaUserAlt className="text-2xl" /> 프로필</Link>
+    <Link to="/recommend" className="flex items-center gap-3 text-xl text-primary font-extrabold hover:text-accent-yellow transition" onClick={() => setOpen(false)}><FaStar className="text-2xl" /> 추천</Link>
+    <Link to="/favorites" className="flex items-center gap-3 text-xl text-primary font-extrabold hover:text-accent-yellow transition" onClick={() => setOpen(false)}><FaRegHeart className="text-2xl" /> 즐겨찾기</Link>
       </nav>
     </>
   );

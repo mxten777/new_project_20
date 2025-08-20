@@ -25,6 +25,7 @@ export default function RecommendPage() {
       let result = sampleServices;
       // 필터 조건이 하나라도 있으면 필터링, 모두 없으면 전체 노출
       const hasProfile = profile && (profile.region || profile.familyType || profile.incomeLevel || profile.age);
+      console.log('[RecommendPage] Loaded profile:', profile);
       if (hasProfile) {
         if (profile.region) {
           result = result.filter(s => s.region === profile.region || s.region === '전국');
@@ -41,7 +42,14 @@ export default function RecommendPage() {
           if (age >= 19 && age <= 34) result = result.filter(s => s.eligibility.includes('청년') || !s.eligibility);
         }
       }
-      setFiltered(result);
+      console.log('[RecommendPage] Filtered result:', result);
+      // 필터 결과가 0개면 전체 카드 fallback
+      if (result.length === 0) {
+        console.warn('[RecommendPage] No results after filtering, falling back to all cards.');
+        setFiltered(sampleServices);
+      } else {
+        setFiltered(result);
+      }
       setLoading(false);
     }, 600); // UX용 로딩 딜레이
   }, []);

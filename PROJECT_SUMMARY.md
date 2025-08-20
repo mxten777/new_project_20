@@ -1,38 +1,46 @@
-# MVP 복지 서비스 추천 앱 프로젝트 요약
+
+# MVP 복지 서비스 추천 앱 프로젝트 요약 (2025.08 기준 최신)
 
 ## 프로젝트 개요
 - **이름:** new_project_20 (Vercel: mvp-project-20)
 - **설명:** 사용자 프로필(연령, 가구 유형, 소득, 지역) 기반 맞춤형 복지 서비스 추천 SPA
-- **주요 목표:** 최고의 UI/UX, 모바일/PC 완벽 대응, MVP 기능 우선 구현, 추후 백엔드 연동
+- **주요 목표:** 카카오/네이버급 세련된 UI/UX, 모바일/PC 완벽 대응, MVP 기능 우선 구현, 추후 백엔드 연동
 
 ## 기술 스택
 - **Frontend:** React (Vite, TypeScript)
-- **Styling:** Tailwind CSS (커스텀 폰트, 반응형, 애니메이션)
+- **Styling:** Tailwind CSS (커스텀 폰트, 반응형, 애니메이션, 테마 확장)
 - **상태관리:** useState, LocalStorage (MVP 단계)
 - **라우팅:** react-router-dom
 - **컴포넌트:** Header, Footer, Layout, HeroSection, UserProfileForm, ServiceDetailModal, MobileNav, Toast 등
 - **폰트:** Noto Sans KR, Inter (Google Fonts)
+- **아이콘:** react-icons
 - **배포:** Vercel (Framework Preset: Vite)
 - **버전관리:** GitHub (mxten777/new_project_20)
 
-## 주요 기능
+## 구현 주요 기능
 - 프로필 입력 및 수정 (이름, 나이, 가구 유형, 소득, 지역)
-- 맞춤형 복지 서비스 추천 카드 리스트
-- 서비스 상세 모달
+- 맞춤형 복지 서비스 추천 카드 리스트 (카카오/네이버 스타일 카드 UI)
+- 서비스 상세 모달 (반투명/블러, 애니메이션)
 - 즐겨찾기(로컬 저장)
-- 모바일/PC 네비게이션, 햄버거 메뉴
-- 세련된 폰트, 은은한 배경, 카드/폼/모달 UI/UX 고도화
+- 모바일/PC 네비게이션, 햄버거 메뉴 (반응형, 플로팅, 블러)
+- 세련된 폰트, 밝고 산뜻한 배경, 카드/폼/모달 UI/UX 고도화
 - Toast 알림
 
-## UI/UX 특징
+## UI/UX 특징 (2025 최신)
 - Tailwind 기반 반응형 레이아웃, 카드, 폼, 모달, 네비게이션
-- 모바일/PC 환경별 네비게이션 자동 전환
+- 카카오/네이버 감성의 밝고 산뜻한 배경, 진회색 텍스트, 부드러운 그림자/블러/라운드
+- 모바일/PC 환경별 네비게이션 자동 전환, 플로팅/고정 메뉴
 - 카드 잘림, 오버플로우, 배경색 등 세부 UI 버그 반복 개선
 - 글로벌 폰트 적용, Google Fonts 연동
 
 ## 배포 및 운영
 - Vercel에 Vite 프로젝트로 연결, production 배포 성공
 - GitHub Actions 등 CI는 미구현(수동 배포)
+
+## 최근 개선/적용 내역
+- Header, Footer, Layout, HeroSection, MobileNav 등 전체 UI/UX 카카오/네이버 스타일로 리디자인
+- 전체 배경 연노랑~화이트 그라데이션, 진회색 텍스트, 카드/모달/네비게이션 고도화
+- JSX 구조 오류, Tailwind 설정 등 반복 개선 및 버그 수정
 
 ## 앞으로 개선/추가할 일
 1. **백엔드 연동**
