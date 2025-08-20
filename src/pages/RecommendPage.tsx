@@ -23,19 +23,23 @@ export default function RecommendPage() {
     setTimeout(() => {
       const profile = getUserProfile();
       let result = sampleServices;
-      if (profile.region) {
-        result = result.filter(s => s.region === profile.region || s.region === '전국');
-      }
-      if (profile.familyType && profile.familyType.includes('한부모')) {
-        result = result.filter(s => s.eligibility.includes('한부모') || !s.eligibility);
-      }
-      if (profile.incomeLevel && profile.incomeLevel === '저소득') {
-        result = result.filter(s => s.eligibility.includes('저소득') || s.eligibility.includes('기초생활') || !s.eligibility);
-      }
-      if (profile.age) {
-        const age = Number(profile.age);
-        if (age >= 65) result = result.filter(s => s.eligibility.includes('65') || !s.eligibility);
-        if (age >= 19 && age <= 34) result = result.filter(s => s.eligibility.includes('청년') || !s.eligibility);
+      // 필터 조건이 하나라도 있으면 필터링, 모두 없으면 전체 노출
+      const hasProfile = profile && (profile.region || profile.familyType || profile.incomeLevel || profile.age);
+      if (hasProfile) {
+        if (profile.region) {
+          result = result.filter(s => s.region === profile.region || s.region === '전국');
+        }
+        if (profile.familyType && profile.familyType.includes('한부모')) {
+          result = result.filter(s => s.eligibility.includes('한부모') || !s.eligibility);
+        }
+        if (profile.incomeLevel && profile.incomeLevel === '저소득') {
+          result = result.filter(s => s.eligibility.includes('저소득') || s.eligibility.includes('기초생활') || !s.eligibility);
+        }
+        if (profile.age) {
+          const age = Number(profile.age);
+          if (age >= 65) result = result.filter(s => s.eligibility.includes('65') || !s.eligibility);
+          if (age >= 19 && age <= 34) result = result.filter(s => s.eligibility.includes('청년') || !s.eligibility);
+        }
       }
       setFiltered(result);
       setLoading(false);

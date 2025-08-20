@@ -5,7 +5,7 @@ import Toast from "../components/Toast";
 export default function ProfilePage() {
   const [toast, setToast] = useState<{ show: boolean; message: string; type?: 'success' | 'error' | 'info' }>({ show: false, message: '' });
 
-  const handleProfileSubmit = (profile: UserProfile) => {
+  const handleProfileSubmit = (_profile: UserProfile) => {
     setToast({ show: true, message: '프로필이 저장되었습니다!', type: 'success' });
   };
 
