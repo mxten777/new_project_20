@@ -6,8 +6,8 @@ import MobileNav from './MobileNav';
 
 export default function Header() {
   return (
-    <header className="w-full bg-white/80 backdrop-blur-md shadow-soft border-b border-border/60 py-3 px-4 sm:px-8 flex items-center justify-between sticky top-0 z-30 animate-fade-in">
-      <div className="flex items-center gap-3 text-2xl font-extrabold tracking-tight text-primary drop-shadow-lg">
+  <header className="w-full bg-white/90 backdrop-blur-lg shadow-lg border-b border-border/60 py-2.5 px-2 sm:px-8 flex items-center justify-between sticky top-0 z-40 animate-fade-in rounded-b-2xl md:rounded-b-3xl transition-all duration-300">
+  <div className="flex items-center gap-3 text-2xl font-extrabold tracking-tight text-primary drop-shadow-lg select-none">
         <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-accent-yellow/80 shadow-card mr-2 animate-bounce-slow">
           <svg width="28" height="28" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#fff" fillOpacity="0.2"/><path d="M7 13c1.5 2 5.5 2 7 0" stroke="#3C82F6" strokeWidth="2" strokeLinecap="round"/><circle cx="9" cy="10" r="1" fill="#3C82F6"/><circle cx="15" cy="10" r="1" fill="#3C82F6"/></svg>
         </span>

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export type UserProfile = {
   name: string;
@@ -22,6 +23,7 @@ const incomeLevels = ["저소득", "중간", "고소득"];
 const regions = ["서울", "경기", "부산", "대구", "광주", "기타"];
 
 export default function UserProfileForm({ onSubmit }: { onSubmit: (profile: UserProfile) => void }) {
+  const navigate = useNavigate();
   const [profile, setProfile] = useState<UserProfile>(initialProfile);
   const [submitted, setSubmitted] = useState(false);
   const [editing, setEditing] = useState(false);
@@ -79,6 +81,16 @@ export default function UserProfileForm({ onSubmit }: { onSubmit: (profile: User
 
   return (
     <form onSubmit={handleSubmit} className="max-w-lg w-full mx-auto bg-white/95 p-8 rounded-2xl shadow-card space-y-7 mt-10 border border-border/70 animate-fade-in">
+      {/* 상단 뒤로가기 버튼 */}
+      <div className="mb-2 flex justify-between items-center">
+        <button
+          type="button"
+          onClick={() => navigate(-1)}
+          className="flex items-center gap-1 text-primary hover:text-primary-dark text-base font-semibold px-2 py-1 rounded transition focus:outline-none focus:ring-2 focus:ring-primary/30"
+        >
+          ← 뒤로가기
+        </button>
+      </div>
       <h2 className="text-2xl font-extrabold mb-6 text-center text-[#23272f] tracking-tight flex items-center justify-center gap-2">
         <span className="inline-block bg-primary-light text-primary text-xl font-bold px-3 py-1 rounded-full shadow-none">👤</span>
         사용자 정보 입력
