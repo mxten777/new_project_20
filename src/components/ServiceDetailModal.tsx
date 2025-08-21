@@ -1,4 +1,6 @@
 
+
+import { useEffect } from 'react';
 import { type WelfareService } from '../data/sampleServices';
 import { isFavorite, toggleFavorite } from '../utils/favorites';
 
@@ -8,8 +10,15 @@ interface Props {
 }
 
 export default function ServiceDetailModal({ service, onClose }: Props) {
+  // 모달이 열릴 때 body 스크롤 방지
+  useEffect(() => {
+    const original = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => { document.body.style.overflow = original; };
+  }, []);
+
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm animate-fadeIn">
+    <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/60 backdrop-blur-sm animate-fadeIn">
       <div className="bg-gradient-to-br from-white via-blue-50 to-purple-50 rounded-3xl shadow-2xl max-w-lg w-full p-10 relative border border-blue-200 animate-fadeInUp">
         <button
           onClick={onClose}
