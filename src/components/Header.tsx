@@ -1,10 +1,27 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+
+import { useEffect, useState } from 'react';
+import { auth, logOut } from '../firebase';
 
 
 import { FaRegHeart, FaUserAlt, FaHome, FaStar } from 'react-icons/fa';
 import MobileNav from './MobileNav';
 
 export default function Header() {
+  const [user, setUser] = useState<any>(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged(setUser);
+    return () => unsubscribe();
+  }, []);
+
+  const handleLogout = async () => {
+    await logOut();
+    setUser(null);
+    navigate('/');
+  };
+
   return (
   <header className="w-full bg-white/90 backdrop-blur-lg shadow-lg border-b border-border/60 py-2.5 px-2 sm:px-8 flex items-center justify-between sticky top-0 z-40 animate-fade-in rounded-b-2xl md:rounded-b-3xl transition-all duration-300">
   <div className="flex items-center gap-3 text-2xl font-extrabold tracking-tight text-primary drop-shadow-lg select-none">
@@ -20,6 +37,11 @@ export default function Header() {
         <Link to="/profile" className="flex items-center gap-1 px-2 xl:px-3 py-1 rounded-lg hover:bg-accent-yellow/40 hover:text-primary transition"><FaUserAlt className="mb-0.5"/> 프로필</Link>
         <Link to="/recommend" className="flex items-center gap-1 px-2 xl:px-3 py-1 rounded-lg hover:bg-accent-yellow/40 hover:text-primary transition"><FaStar className="mb-0.5"/> 추천</Link>
         <Link to="/favorites" className="flex items-center gap-1 px-2 xl:px-3 py-1 rounded-lg hover:bg-accent-yellow/40 hover:text-primary transition"><FaRegHeart className="mb-0.5"/> 즐겨찾기</Link>
+        {user ? (
+          <button onClick={handleLogout} className="ml-2 px-3 py-1 rounded-lg bg-primary text-white hover:bg-primary-dark font-bold transition">로그아웃</button>
+        ) : (
+          <Link to="/login" className="ml-2 px-3 py-1 rounded-lg bg-primary text-white hover:bg-primary-dark font-bold transition">로그인</Link>
+        )}
       </nav>
       <div className="flex items-center md:hidden">
         <MobileNav />

@@ -1,9 +1,18 @@
 import { Link } from 'react-router-dom';
 import { FaRegHeart, FaUserAlt, FaHome, FaStar, FaBars, FaTimes } from 'react-icons/fa';
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { auth, logOut } from '../firebase';
 
 export default function MobileNav() {
   const [open, setOpen] = useState(false);
+  const [user, setUser] = useState<any>(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged(setUser);
+    return () => unsubscribe();
+  }, []);
 
   // 메뉴 오픈 시 body 스크롤 차단
   useEffect(() => {
@@ -51,7 +60,28 @@ export default function MobileNav() {
           <Link to="/recommend" className="flex items-center gap-2 text-base font-semibold text-primary rounded-lg px-3 py-2 mb-0.5 bg-gradient-to-r from-[#eaffd0]/80 to-[#f6ffe7]/80 hover:bg-primary hover:text-white shadow transition-all duration-150 active:scale-95" onClick={() => setOpen(false)}><FaStar className="text-lg" /> 추천</Link>
           <Link to="/favorites" className="flex items-center gap-2 text-base font-semibold text-primary rounded-lg px-3 py-2 mb-0.5 bg-gradient-to-r from-[#eaffd0]/80 to-[#f6ffe7]/80 hover:bg-primary hover:text-white shadow transition-all duration-150 active:scale-95" onClick={() => setOpen(false)}><FaRegHeart className="text-lg" /> 즐겨찾기</Link>
         </div>
-        {/* 하단 미니 프로필/슬로건 등 추가 가능 */}
+        <div className="px-2 pb-4 mt-auto">
+          {user ? (
+            <button
+              onClick={async () => {
+                await logOut();
+                setUser(null);
+                setOpen(false);
+                navigate('/');
+              }}
+              className="w-full bg-primary text-white py-2.5 rounded-lg font-bold text-base shadow hover:bg-primary-dark transition-all duration-150 mt-2"
+            >
+              로그아웃
+            </button>
+          ) : (
+            <button
+              onClick={() => { setOpen(false); navigate('/login'); }}
+              className="w-full bg-primary text-white py-2.5 rounded-lg font-bold text-base shadow hover:bg-primary-dark transition-all duration-150 mt-2"
+            >
+              로그인
+            </button>
+          )}
+        </div>
       </nav>
     </>
   );

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { saveUserProfile, auth } from "../firebase";
 
 export type UserProfile = {
   name: string;
@@ -9,7 +10,6 @@ export type UserProfile = {
   region: string;
 };
 
-const LOCAL_KEY = 'userProfile';
 const initialProfile: UserProfile = {
   name: "",
   age: "",
@@ -29,18 +29,7 @@ export default function UserProfileForm({ onSubmit }: { onSubmit: (profile: User
   const [editing, setEditing] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  // LocalStorage에서 불러오기
-  useEffect(() => {
-    const saved = localStorage.getItem(LOCAL_KEY);
-    if (saved) {
-      setProfile(JSON.parse(saved));
-    }
-  }, []);
-
-  // 입력값 변경 시 LocalStorage에 저장
-  useEffect(() => {
-    localStorage.setItem(LOCAL_KEY, JSON.stringify(profile));
-  }, [profile]);
+  // Firestore에서 프로필 불러오기 등은 추후 구현 가능
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -58,7 +47,7 @@ export default function UserProfileForm({ onSubmit }: { onSubmit: (profile: User
     return null;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const err = validate();
     if (err) {
@@ -68,7 +57,21 @@ export default function UserProfileForm({ onSubmit }: { onSubmit: (profile: User
     setError(null);
     setSubmitted(true);
     setEditing(false);
-    onSubmit(profile);
+    const user = auth.currentUser;
+    if (user) {
+      try {
+        await saveUserProfile(user.uid, profile);
+        onSubmit(profile);
+      } catch (error) {
+        setError("프로필 저장 중 오류가 발생했습니다.");
+        setSubmitted(false);
+        return;
+      }
+    } else {
+      setError("로그인 후 이용해 주세요.");
+      setSubmitted(false);
+      return;
+    }
     setTimeout(() => setSubmitted(false), 2000);
   };
 
@@ -76,7 +79,7 @@ export default function UserProfileForm({ onSubmit }: { onSubmit: (profile: User
     setProfile(initialProfile);
     setEditing(true);
     setError(null);
-    localStorage.removeItem(LOCAL_KEY);
+    // Firestore에서 삭제는 별도 구현 필요(선택)
   };
 
   return (
