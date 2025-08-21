@@ -30,7 +30,7 @@ export default function MobileNav() {
       {open && (
         <div className="fixed inset-0 z-[55] bg-black/40 backdrop-blur-[2.5px] animate-fadeIn transition-all duration-300" onClick={() => setOpen(false)} />
       )}
-  <nav className={`fixed top-0 right-0 h-full w-[32vw] max-w-[180px] bg-gradient-to-br from-[#eaffd0] via-[#f6ffe7] to-[#ffffff] shadow-2xl z-[70] transform ${open ? 'translate-x-0' : 'translate-x-full'} transition-transform duration-300 flex flex-col p-0 pt-2 gap-0 border-l-2 border-primary/10 rounded-l-3xl backdrop-blur-xl`} aria-label="모바일 메뉴" style={{ pointerEvents: open ? 'auto' : 'none' }}>
+  <nav className={`fixed top-0 right-0 h-full w-[65vw] max-w-[260px] bg-gradient-to-br from-[#eaffd0] via-[#f6ffe7] to-[#ffffff] shadow-2xl z-[70] transform ${open ? 'translate-x-0' : 'translate-x-full'} transition-transform duration-300 flex flex-col p-0 pt-2 gap-0 border-l-2 border-primary/10 rounded-l-3xl backdrop-blur-xl`} aria-label="모바일 메뉴" style={{ pointerEvents: open ? 'auto' : 'none' }}>
         {/* 상단 미니 로고/닫기 */}
         <div className="flex items-center justify-between px-4 pt-2 pb-1 mb-2 border-b border-primary/10 bg-gradient-to-r from-primary/10 to-white/0 rounded-tl-3xl">
           <span className="inline-flex items-center gap-1 text-base font-extrabold text-primary drop-shadow-sm select-none">
