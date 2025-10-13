@@ -1,0 +1,72 @@
+{
+  "name": "park-youngjin-dental",
+  "private": true,
+  "version": "1.5.0",
+  "type": "module",
+  "description": "박영진치과의원 프리미엄 웹사이트 - React 19.1.0 + TypeScript 5.8.3 + Vite 7.0.0",
+  "author": "GitHub Copilot",
+  "license": "MIT",
+  "homepage": "https://park-youngjin-dental.vercel.app",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/park-youngjin-dental.git"
+  },
+  "keywords": [
+    "dental",
+    "medical",
+    "healthcare",
+    "react",
+    "typescript",
+    "vite",
+    "tailwindcss",
+    "glassmorphism",
+    "dark-mode",
+    "responsive",
+    "booking-system",
+    "premium-website"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview",
+    "type-check": "tsc --noEmit",
+    "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json,css,md}\"",
+    "analyze": "vite-bundle-analyzer"
+  },
+  "dependencies": {
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-router-dom": "^6.28.0",
+    "framer-motion": "^11.11.17",
+    "lucide-react": "^0.454.0",
+    "react-hook-form": "^7.53.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@typescript-eslint/eslint-plugin": "^8.15.0",
+    "@typescript-eslint/parser": "^8.15.0",
+    "@vitejs/plugin-react": "^4.3.3",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^9.15.0",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "eslint-plugin-react-refresh": "^0.4.14",
+    "postcss": "^8.5.1",
+    "prettier": "^3.3.3",
+    "tailwindcss": "^3.4.18",
+    "typescript": "^5.8.3",
+    "vite": "^7.1.9",
+    "vite-bundle-analyzer": "^0.11.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ]
+}
