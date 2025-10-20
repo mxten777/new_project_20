@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 박영진치과의원 프리미엄 웹사이트
 
 ## 📋 프로젝트 개요
@@ -47,6 +48,77 @@ src/
 ├── App_Premium.tsx     # 메인 앱 컴포넌트
 ├── main.tsx           # 앱 진입점
 └── index.css          # 글로벌 스타일
+=======
+
+
+
+---
+
+- **배포**: Vercel
+
+---
+
+## 폴더/파일 구조
+
+```
+src/
+  components/   # 공통 UI 컴포넌트 (Header, Footer, Layout, MobileNav, Toast 등)
+  pages/        # 주요 페이지 (HomePage, RecommendPage, ProfilePage, LoginPage, SignUpPage, FavoritesPage)
+  data/         # 샘플 데이터 등
+  utils/        # 유틸 함수
+  firebase.ts   # Firebase 초기화 및 인증/DB 함수
+  main.tsx      # 앱 진입점
+  App.tsx       # 라우팅 및 전체 레이아웃
+  index.css     # 글로벌 스타일
+public/
+tailwind.config.js
+postcss.config.cjs
+pnpm-lock.yaml
+.env             # Firebase 환경변수
+vercel.json      # Vercel 배포 설정
+
+---
+
+- **즐겨찾기, 상세 모달, 토스트 알림 등 부가 기능**
+
+---
+
+- Vercel 배포 시 TypeScript, ESLint 등 빌드 오류 주의
+
+---
+
+
+---
+
+### React ESLint 플러그인 예시 (선택)
+
+아래 플러그인은 필요시 추가로 설치해 사용할 수 있습니다.
+
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
+
+export default tseslint.config([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Enable lint rules for React
+      reactX.configs['recommended-typescript'],
+      // Enable lint rules for React DOM
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
+>>>>>>> d868896 (프리미엄급 UI/UX 및 모바일/PC 반응형 개선 완료)
 ```
 
 ## ✨ 주요 기능

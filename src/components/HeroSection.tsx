@@ -4,10 +4,11 @@ import { Phone, MessageCircle, Star, Award, Heart, Shield } from 'lucide-react';
 import PremiumButton from './PremiumButton.tsx';
 
 const HeroSection: React.FC = () => {
+  // 복지 서비스 추천 SPA용 features 예시 (필요시 사용)
   const features = [
-    { icon: Star, text: '20년 경력 전문의' },
-    { icon: Award, text: '최첨단 장비' },
-    { icon: Heart, text: '개인 맞춤 치료' }
+    { icon: Star, text: '맞춤형 복지 추천' },
+    { icon: Award, text: '실시간 서비스' },
+    { icon: Heart, text: '개인 프로필 기반' }
   ];
 
   return (
@@ -68,7 +69,7 @@ const HeroSection: React.FC = () => {
               transition={{ duration: 0.6 }}
             >
               <div className="w-2 h-2 bg-white rounded-full animate-pulse" />
-              <span className="text-sm font-medium">🏥 후암동 새로운 시작</span>
+              <span className="text-sm font-medium">복지 서비스 추천 SPA</span>
             </motion.div>
 
             {/* Main Title */}
@@ -78,22 +79,14 @@ const HeroSection: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <h1 className="mobile-title md:text-5xl lg:text-6xl font-bold leading-tight">
+              <h1 className="mobile-title md:text-5xl lg:text-6xl font-bold leading-tight text-white drop-shadow-lg text-center">
                 <motion.span 
-                  className="block text-white drop-shadow-lg"
+                  className="block"
                   initial={{ opacity: 0, x: -50 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 1, delay: 0.3 }}
                 >
-                  박영진치과
-                </motion.span>
-                <motion.span 
-                  className="block text-xl md:text-3xl lg:text-5xl mt-2 text-white/95 drop-shadow-md"
-                  initial={{ opacity: 0, x: -30 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 1, delay: 0.6 }}
-                >
-                  새로운 공간에서
+                  복지 서비스 추천
                 </motion.span>
                 <motion.span 
                   className="block text-xl md:text-3xl lg:text-5xl mt-2 text-yellow-300 drop-shadow-lg font-black"
@@ -101,7 +94,7 @@ const HeroSection: React.FC = () => {
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 1.2, delay: 0.9 }}
                 >
-                  더 나은 치료를
+                  내게 꼭 맞는 복지 찾기
                 </motion.span>
               </h1>
             </motion.div>
@@ -114,32 +107,15 @@ const HeroSection: React.FC = () => {
               transition={{ duration: 0.6, delay: 0.4 }}
             >
               <p className="mobile-subtitle md:text-xl lg:text-2xl font-semibold text-white drop-shadow-md">
-                20년 경력의 전문의가 직접 진료하는 신뢰할 수 있는 치과
+                입력한 프로필 기반으로 전국 복지 서비스를 추천합니다.
               </p>
               <p className="mobile-body md:text-lg text-white/90 drop-shadow-sm leading-relaxed">
-                최첨단 디지털 장비와 개인 맞춤형 치료로 건강한 미소를 선사합니다
+                연령, 가구 유형, 소득, 지역만 입력하면 맞춤형 복지 혜택을 빠르게 확인하세요!
               </p>
             </motion.div>
 
             {/* Features */}
-            <motion.div
-              className="flex flex-wrap justify-center lg:justify-start gap-3 mb-8 px-2"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-            >
-              {features.map((feature, index) => (
-                <motion.div
-                  key={index}
-                  className="flex items-center gap-2 bg-white/25 backdrop-blur-sm rounded-xl px-4 py-3 border border-white/20 shadow-lg"
-                  whileHover={{ scale: 1.05, backgroundColor: 'rgba(255,255,255,0.35)' }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <feature.icon className="w-5 h-5 flex-shrink-0" />
-                  <span className="font-semibold text-sm lg:text-base high-contrast-text">{feature.text}</span>
-                </motion.div>
-              ))}
-            </motion.div>
+            {/* 필요시 features 영역 사용 가능 */}
 
             {/* CTA Buttons */}
             <motion.div
@@ -148,57 +124,20 @@ const HeroSection: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.8 }}
             >
-              <motion.a
-                href="tel:02-712-5678"
-                className="inline-flex items-center justify-center gap-3 bg-white text-primary-600 hover:bg-gray-50 font-bold py-5 px-6 rounded-2xl shadow-2xl transition-all duration-300 w-full lg:w-auto min-h-[60px]"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <Phone className="w-6 h-6 flex-shrink-0" />
-                <div className="text-center lg:text-left">
-                  <div className="text-sm opacity-75 font-medium">지금 바로 예약</div>
-                  <div className="text-lg font-bold tracking-wide">02-712-5678</div>
-                </div>
-              </motion.a>
-              
               <PremiumButton
                 variant="glass"
                 size="lg"
                 icon={MessageCircle}
                 className="border-2 border-white text-white hover:bg-white hover:text-primary-600"
+                to="/profile"
               >
-                자세히 보기
+                내게 맞는 복지 찾기
               </PremiumButton>
             </motion.div>
           </div>
 
           {/* Visual Element */}
-          <motion.div
-            className="relative"
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1, delay: 0.5 }}
-          >
-            <div className="relative">
-              {/* Main Card */}
-              <motion.div
-                className="glass-card bg-white/15 rounded-3xl p-8 border border-white/20 floating-animation pulse-glow"
-                animate={{ 
-                  y: [0, -15, 0],
-                  rotateX: [0, 2, 0],
-                  rotateY: [0, -2, 0]
-                }}
-                transition={{ 
-                  duration: 6,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              >
-                <div className="text-center">
-                  <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-6">
-                    <Shield className="w-10 h-10 text-primary-500" />
-                  </div>
-                  <h3 className="text-2xl font-bold mb-4">Grand Opening 특별 혜택</h3>
+          {/* 필요시 시각적 요소 추가 가능 */}
                   <div className="space-y-3 text-lg">
                     <div className="flex items-center justify-between">
                       <span>모든 치료</span>
@@ -248,6 +187,26 @@ const HeroSection: React.FC = () => {
             </div>
           </motion.div>
         </div>
+<<<<<<< HEAD
+=======
+        <h1 className="text-4xl md:text-5xl font-extrabold text-primary mb-4 leading-tight drop-shadow-lg text-center animate-fade-in">
+          <span className="block">지역 복지 서비스</span>
+          <span className="block mt-2">
+            <span className="bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-400 text-primary px-3 py-1 rounded-2xl shadow-lg font-black inline-block animate-bounce-slow">추천 앱</span>
+          </span>
+        </h1>
+        <p className="text-lg md:text-xl text-text-subtle mb-8 font-medium">
+          나에게 꼭 맞는 정부·지자체 복지 혜택을 쉽고 빠르게 찾으세요.<br />
+          연령, 가구 유형, 소득, 지역만 입력하면{' '}
+          <span className="text-primary font-bold">맞춤형 복지 서비스</span>를 추천해드립니다.
+        </p>
+        <Link
+          to="/profile"
+          className="inline-block bg-accent-yellow text-primary font-extrabold py-4 px-10 rounded-2xl shadow-card hover:bg-primary hover:text-white transition text-xl animate-bounce-slow"
+        >
+          내게 맞는 복지 찾기
+        </Link>
+>>>>>>> d868896 (프리미엄급 UI/UX 및 모바일/PC 반응형 개선 완료)
       </div>
 
       {/* Scroll Indicator */}
