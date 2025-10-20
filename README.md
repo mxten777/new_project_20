@@ -1,9 +1,45 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # 박영진치과의원 프리미엄 웹사이트
 
 ## 📋 프로젝트 개요
 
 박영진치과의원을 위한 현대적이고 프리미엄한 웹사이트입니다. React 19.1.0, TypeScript 5.8.3, Vite 7.0.0을 기반으로 구축되었으며, Glassmorphism 디자인과 스마트 기능들을 포함합니다.
+
+## 🛠 기술 스택
+
+### Core Technologies
+- **React 19.1.0** - 최신 React 버전으로 성능 최적화
+- **TypeScript 5.8.3** - 타입 안전성과 개발 효율성 증대
+- **Vite 7.0.0** - 빠른 개발 서버와 빌드 시스템
+- **Tailwind CSS 3.4.18** - 유틸리티 기반 CSS 프레임워크
+
+### UI/UX Libraries
+- **Framer Motion** - 고급 애니메이션 및 인터랙션
+- **Lucide React** - 아이콘 라이브러리
+- **React Hook Form** - 폼 관리 및 유효성 검사
+- **React Router DOM** - 클라이언트 사이드 라우팅
+
+### Design System
+- **Glassmorphism** - 유리질감 디자인 효과
+- **Dark Mode** - 다크/라이트 테마 지원
+- **Responsive Design** - 모바일 우선 반응형 디자인
+- **Custom Color Palette** - 의료 브랜딩에 최적화된 색상 체계
+
+## 🏗 프로젝트 구조
+
+=======
+
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+# 지역 복지 서비스 추천 SPA
+
+## 📋 프로젝트 개요
+
+지역 복지 서비스 추천을 위한 프리미엄 SPA입니다. React 19, TypeScript, Vite 기반, 실시간 맞춤형 복지 추천, 반응형 UI/UX, Firebase 연동, Vercel 배포.
 
 ## 🛠 기술 스택
 
@@ -48,38 +84,7 @@ src/
 ├── App_Premium.tsx     # 메인 앱 컴포넌트
 ├── main.tsx           # 앱 진입점
 └── index.css          # 글로벌 스타일
-=======
-
-
-
----
-
-- **배포**: Vercel
-
----
-
-## 폴더/파일 구조
-
 ```
-src/
-  components/   # 공통 UI 컴포넌트 (Header, Footer, Layout, MobileNav, Toast 등)
-  pages/        # 주요 페이지 (HomePage, RecommendPage, ProfilePage, LoginPage, SignUpPage, FavoritesPage)
-  data/         # 샘플 데이터 등
-  utils/        # 유틸 함수
-  firebase.ts   # Firebase 초기화 및 인증/DB 함수
-  main.tsx      # 앱 진입점
-  App.tsx       # 라우팅 및 전체 레이아웃
-  index.css     # 글로벌 스타일
-public/
-tailwind.config.js
-postcss.config.cjs
-pnpm-lock.yaml
-.env             # Firebase 환경변수
-vercel.json      # Vercel 배포 설정
-
----
-
-- **즐겨찾기, 상세 모달, 토스트 알림 등 부가 기능**
 
 ---
 

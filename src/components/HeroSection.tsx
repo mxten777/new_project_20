@@ -186,9 +186,7 @@ const HeroSection: React.FC = () => {
               </motion.div>
             </div>
           </motion.div>
-        </div>
-<<<<<<< HEAD
-=======
+  </div>
         <h1 className="text-4xl md:text-5xl font-extrabold text-primary mb-4 leading-tight drop-shadow-lg text-center animate-fade-in">
           <span className="block">지역 복지 서비스</span>
           <span className="block mt-2">
