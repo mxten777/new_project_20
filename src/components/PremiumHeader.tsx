@@ -13,8 +13,8 @@ export default function PremiumHeader() {
     { to: '/favorites', label: '즐겨찾기', icon: <Users className="w-5 h-5 mr-2" /> },
   ]
   return (
-  <header className="w-full bg-gradient-to-r from-purple-800 via-purple-400 to-green-400 shadow-xl border-b border-purple-700 sticky top-0 z-50">
-  <div className="max-w-6xl mx-auto flex items-center justify-between px-4 py-3 md:py-4">
+    <header className="w-full bg-gradient-to-r from-purple-800 via-purple-400 to-green-400 shadow-xl border-b border-purple-700 sticky top-0 z-50">
+      <div className="max-w-6xl mx-auto flex items-center justify-between px-4 py-3 md:py-4">
         <div className="flex items-center gap-2">
           <Sparkles className="w-8 h-8 text-white drop-shadow-lg" />
           <span className="font-extrabold text-2xl md:text-3xl text-white tracking-tight font-premium drop-shadow-lg">MVP Welfare</span>
@@ -37,8 +37,11 @@ export default function PremiumHeader() {
           </button>
           {profileMenuOpen && (
             <div className="absolute right-0 mt-12 bg-surface rounded-xl premium-shadow border border-primary-light z-50 min-w-[160px] animate-fadein">
-              <button className="w-full flex items-center gap-2 px-4 py-3 text-primary hover:bg-primary-light rounded-xl font-bold transition-premium" aria-label="설정">
-                <Settings className="w-5 h-5" /> 설정
+              <button className="w-full flex items-center gap-2 px-4 py-3 text-primary hover:bg-primary-dark hover:text-white rounded-xl font-bold transition-premium group" aria-label="설정">
+                <span className="inline-flex items-center justify-center rounded-full bg-white border-2 border-primary shadow group-hover:bg-primary group-hover:border-primary-dark transition-all duration-150 mr-1">
+                  <Settings className="w-5 h-5 text-primary-dark group-hover:text-white" style={{ filter: 'drop-shadow(0 2px 6px rgba(60,80,180,0.18))' }} />
+                </span>
+                설정
               </button>
               <button className="w-full flex items-center gap-2 px-4 py-3 text-error hover:bg-error-light rounded-xl font-bold transition-premium" aria-label="로그아웃">
                 <LogOut className="w-5 h-5" /> 로그아웃
@@ -49,15 +52,17 @@ export default function PremiumHeader() {
             <Bell className="w-7 h-7 text-yellow-300 drop-shadow-lg" />
             <span className="absolute top-0 right-0 w-3 h-3 bg-error rounded-full border-2 border-surface"></span>
           </button>
-          <button className="relative" aria-label="설정">
-            <Settings className="w-7 h-7 text-primary-light drop-shadow-lg" />
+          <button className="relative group" aria-label="설정">
+            <span className="inline-flex items-center justify-center rounded-full bg-white border-2 border-primary shadow-lg group-hover:bg-primary group-hover:border-primary-dark transition-all duration-150">
+              <Settings className="w-7 h-7 text-primary-dark group-hover:text-white" style={{ filter: 'drop-shadow(0 2px 6px rgba(60,80,180,0.18))' }} />
+            </span>
           </button>
           <button className="md:hidden p-2 rounded-lg bg-blue-800 hover:bg-blue-900 shadow" onClick={() => setMenuOpen(true)} aria-label="메뉴 열기">
             <Menu className="w-7 h-7 text-white" />
           </button>
         </div>
       </div>
-  {/* 모바일 메뉴 오버레이 */}
+      {/* 모바일 메뉴 오버레이 */}
       {menuOpen && (
         <div className="fixed inset-0 z-[120] bg-black/50 flex">
           <div className="w-4/5 max-w-xs bg-gradient-to-br from-purple-800 via-purple-400 to-green-400 shadow-2xl h-full flex flex-col pt-6 pb-8 px-6 animate-slide-in-left border-r-2 border-purple-700">
@@ -86,6 +91,6 @@ export default function PremiumHeader() {
           <div className="flex-1" onClick={() => setMenuOpen(false)} />
         </div>
       )}
-  </header>
+    </header>
   )
 }
