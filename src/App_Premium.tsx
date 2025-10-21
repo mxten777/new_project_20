@@ -9,6 +9,7 @@ import AboutSection from './components/AboutSection.tsx';
 import ServicesSection from './components/ServicesSection.tsx';
 import TestimonialsSection from './components/TestimonialsSection.tsx';
 import BookingCalendar from './components/BookingCalendar.tsx';
+import RecommendPage from './components/RecommendPage.tsx';
 import FooterNew from './components/FooterNew.tsx';
 
 const App_Premium: React.FC = () => {
@@ -42,6 +43,10 @@ const App_Premium: React.FC = () => {
               <Route 
                 path="/testimonials" 
                 element={<TestimonialsSection />} 
+              />
+              <Route 
+                path="/recommend" 
+                element={<RecommendPage />} 
               />
               <Route 
                 path="/booking" 

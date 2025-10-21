@@ -6,29 +6,29 @@ const AboutSection: React.FC = () => {
   const aboutCards = [
     {
       icon: GraduationCap,
-      title: '풍부한 경험',
-      description: '치의학 박사 학위와 20년간의 임상 경험을 바탕으로 신뢰할 수 있는 진료를 제공합니다.',
-      features: ['치의학 박사', '20년 임상경험', '대학병원 출신']
+      title: '전문 복지 정보',
+      description: '정부 공공데이터와 복지 전문가의 검증을 통해 신뢰할 수 있는 복지 정보를 제공합니다.',
+      features: ['공공데이터 연동', '전문가 검증', '실시간 업데이트']
     },
     {
       icon: Award,
-      title: '최첨단 장비',
-      description: '3D CT, 디지털 스캐너 등 최신 의료 장비로 정확한 진단과 안전한 치료를 실현합니다.',
-      features: ['3D CT 장비', '디지털 스캐너', '멸균 시스템']
+      title: '맞춤형 추천',
+      description: '개인의 상황과 조건을 분석하여 가장 적합한 복지 혜택을 추천해드립니다.',
+      features: ['AI 맞춤 분석', '개인별 추천', '최적화 알고리즘']
     },
     {
       icon: Heart,
-      title: '개인 맞춤 치료',
-      description: '환자 한 분 한 분의 상태를 정확히 파악하여 최적의 개인 맞춤형 치료 계획을 제공합니다.',
-      features: ['1:1 맞춤 상담', '개인별 치료계획', '사후 관리']
+      title: '간편한 신청 지원',
+      description: '복잡한 복지 신청 절차를 간소화하여 누구나 쉽게 복지 혜택을 받을 수 있도록 지원합니다.',
+      features: ['1:1 신청 지원', '간편 절차 안내', '사후 관리']
     }
   ];
 
   const stats = [
-    { number: '20+', label: '년 경력' },
-    { number: '5000+', label: '치료 케이스' },
-    { number: '98%', label: '환자 만족도' },
-    { number: '24/7', label: '응급 대응' }
+    { number: '10,000+', label: '누적 이용자' },
+    { number: '500+', label: '복지 정보' },
+    { number: '97%', label: '이용자 만족도' },
+    { number: '365일', label: '상담 지원' }
   ];
 
   return (
@@ -43,11 +43,10 @@ const AboutSection: React.FC = () => {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-            박영진치과 소개
+            복지 서비스 추천 플랫폼 소개
           </h2>
-                    <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            환자 중심의 개인 맞춤 치료를 통해 자연치아를 최대한 보존하며,
-            편안하고 안전한 진료환경을 제공합니다.
+          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            전국의 다양한 복지 정책과 지원 정보를 쉽고 빠르게 안내하는 복지 서비스 추천 플랫폼입니다. 누구나 맞춤형 복지 혜택을 한눈에 확인할 수 있습니다.
           </p>
         </motion.div>
 
@@ -103,28 +102,27 @@ const AboutSection: React.FC = () => {
                   <Stethoscope className="w-8 h-8 text-white" />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-gray-900">원장 박영진</h3>
-                  <p className="text-primary-600 font-semibold">치의학 박사 · 20년 임상경험</p>
+                  <h3 className="text-2xl font-bold text-gray-900">복지 서비스 추천</h3>
+                  <p className="text-primary-600 font-semibold">전국 복지 정보 플랫폼</p>
                 </div>
               </div>
 
               <div className="space-y-4 mb-8">
                 <div>
-                  <h4 className="font-semibold text-gray-900 mb-2">전문분야</h4>
+                  <h4 className="font-semibold text-gray-900 mb-2">주요 서비스</h4>
                   <div className="flex flex-wrap gap-2">
-                    {['보존치료', '보철치료', '임플란트', '심미치료'].map((specialty, index) => (
+                    {['기초생활수급', '장애인복지', '노인복지', '청년복지', '아동복지'].map((service, index) => (
                       <span key={index} className="px-3 py-1 bg-primary-50 text-primary-700 rounded-full text-sm font-medium">
-                        {specialty}
+                        {service}
                       </span>
                     ))}
                   </div>
                 </div>
 
                 <div>
-                  <h4 className="font-semibold text-gray-900 mb-2">진료철학</h4>
+                  <h4 className="font-semibold text-gray-900 mb-2">플랫폼 철학</h4>
                   <p className="text-gray-600 leading-relaxed">
-                    "환자 중심의 개인 맞춤 치료를 통해 자연치아를 최대한 보존하며, 
-                    편안하고 안전한 진료환경을 제공하여 건강한 미소를 만들어드립니다."
+                    "누구나 쉽고 빠르게 복지 혜택을 찾고, 신뢰할 수 있는 정보를 통해 더 나은 삶을 누릴 수 있도록 돕습니다."
                   </p>
                 </div>
               </div>
@@ -132,24 +130,24 @@ const AboutSection: React.FC = () => {
               <div className="grid grid-cols-2 gap-4">
                 <div className="flex items-center gap-2">
                   <Shield className="w-5 h-5 text-primary-500" />
-                  <span className="text-sm font-medium text-gray-700">대학병원 출신</span>
+                  <span className="text-sm font-medium text-gray-700">공공 데이터 기반</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Award className="w-5 h-5 text-primary-500" />
-                  <span className="text-sm font-medium text-gray-700">다수 논문 발표</span>
+                  <span className="text-sm font-medium text-gray-700">이용자 만족도 1위</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Users className="w-5 h-5 text-primary-500" />
-                  <span className="text-sm font-medium text-gray-700">5000+ 케이스</span>
+                  <span className="text-sm font-medium text-gray-700">누적 10,000+ 이용자</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Clock className="w-5 h-5 text-primary-500" />
-                  <span className="text-sm font-medium text-gray-700">20년 경력</span>
+                  <span className="text-sm font-medium text-gray-700">365일 상담 지원</span>
                 </div>
               </div>
             </div>
 
-            {/* Doctor Image Placeholder */}
+            {/* Platform Image Placeholder */}
             <motion.div
               className="relative"
               whileHover={{ scale: 1.02 }}
@@ -160,7 +158,7 @@ const AboutSection: React.FC = () => {
                   <div className="w-24 h-24 bg-gradient-to-br from-primary-500 to-primary-600 rounded-full flex items-center justify-center mx-auto mb-4">
                     <Stethoscope className="w-12 h-12 text-white" />
                   </div>
-                  <p className="text-gray-600 font-medium">원장님 사진</p>
+                  <p className="text-gray-600 font-medium">플랫폼 이미지</p>
                   <p className="text-sm text-gray-500">준비 중</p>
                 </div>
               </div>
@@ -205,27 +203,27 @@ const AboutSection: React.FC = () => {
           transition={{ duration: 0.6 }}
         >
           <div className="text-center mb-8">
-            <h3 className="text-2xl lg:text-3xl font-bold mb-4">시설 특징</h3>
-            <p className="text-lg opacity-90">최첨단 장비와 편안한 환경을 갖춘 프리미엄 치과</p>
+            <h3 className="text-2xl lg:text-3xl font-bold mb-4">플랫폼 특징</h3>
+            <p className="text-lg opacity-90">다양한 복지 정보와 쉽고 빠른 추천 서비스</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              { title: '최첨단 3D CT 장비', desc: '정밀한 진단' },
-              { title: '디지털 구강스캐너', desc: '정확한 측정' },
-              { title: '멸균 시스템 완비', desc: '안전한 치료' },
-              { title: '개인 진료실 운영', desc: '프라이버시 보호' },
-              { title: '편안한 대기 공간', desc: '쾌적한 환경' },
-              { title: '응급 대응 시스템', desc: '24시간 지원' }
-            ].map((facility, index) => (
+              { title: '맞춤형 복지 추천', desc: '개인 상황에 맞는 혜택 안내' },
+              { title: '실시간 상담 지원', desc: '365일 온라인 상담' },
+              { title: '공공 데이터 연동', desc: '신뢰할 수 있는 정보 제공' },
+              { title: '간편한 신청 안내', desc: '복잡한 절차 없이 빠른 신청' },
+              { title: '누적 10,000+ 이용자', desc: '전국민 복지 정보 제공' },
+              { title: '이용자 만족도 1위', desc: '실제 후기 기반 신뢰도' }
+            ].map((feature, index) => (
               <motion.div
                 key={index}
                 className="bg-white/20 backdrop-blur-sm rounded-xl p-4 text-center"
                 whileHover={{ scale: 1.05, backgroundColor: 'rgba(255,255,255,0.3)' }}
                 transition={{ duration: 0.2 }}
               >
-                <div className="font-semibold mb-1">{facility.title}</div>
-                <div className="text-sm opacity-75">{facility.desc}</div>
+                <div className="font-semibold mb-1">{feature.title}</div>
+                <div className="text-sm opacity-75">{feature.desc}</div>
               </motion.div>
             ))}
           </div>

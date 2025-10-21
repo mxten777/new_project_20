@@ -7,71 +7,71 @@ const TestimonialsSection: React.FC = () => {
 
   const testimonials = [
     {
-      name: '김○○',
-      age: 35,
-      treatment: '임플란트',
-      rating: 5,
-      content: '20년 넘게 치과를 무서워해서 치료를 미루다가 박영진 원장님을 만났습니다. 정말 친절하고 자세한 설명으로 불안감을 덜어주셨어요. 임플란트 수술도 전혀 아프지 않았고, 지금은 자연치아처럼 편안합니다.',
-      highlight: '전혀 아프지 않은 임플란트'
-    },
-    {
       name: '이○○',
-      age: 42,
-      treatment: '미백치료',
+      age: 34,
+      service: '청년 주거복지',
       rating: 5,
-      content: '결혼식을 앞두고 미백치료를 받았는데 정말 만족스러워요! 색이 너무 자연스럽게 밝아져서 주변에서 다들 놀라워합니다. 원장님이 개인별 맞춤으로 농도를 조절해주셔서 안전했어요.',
-      highlight: '자연스러운 미백 효과'
+      content: '복지 서비스 추천 플랫폼을 통해 내게 꼭 맞는 주거 지원 정책을 쉽게 찾을 수 있었어요. 신청 방법도 상세히 안내해줘서 큰 도움이 됐습니다.',
+      highlight: '맞춤형 주거복지 추천'
     },
     {
       name: '박○○',
-      age: 28,
-      treatment: '충치치료',
+      age: 47,
+      service: '노인 돌봄 서비스',
       rating: 5,
-      content: '직장 때문에 시간이 없어서 걱정했는데, 하루 만에 충치치료를 깔끔하게 끝내주셨어요. 마취도 전혀 아프지 않았고, 치료 후에도 불편함이 없어서 정말 감사했습니다.',
-      highlight: '당일 치료 완료'
+      content: '부모님을 위한 돌봄 서비스 정보를 한눈에 비교할 수 있어 편리했습니다. 실제 이용자 후기도 많아 신뢰가 갔어요.',
+      highlight: '신뢰도 높은 후기 제공'
     },
     {
       name: '최○○',
-      age: 55,
-      treatment: '잇몸치료',
+      age: 29,
+      service: '청년 취업 지원',
       rating: 5,
-      content: '오랫동안 잇몸이 아파서 고생했는데, 체계적인 치료계획으로 완치해주셨어요. 정기검진까지 꼼꼼히 관리해주셔서 이제는 잇몸 건강이 정말 좋아졌습니다.',
-      highlight: '체계적인 사후 관리'
+      content: '취업 준비에 필요한 다양한 복지 혜택을 한 번에 확인할 수 있어 시간과 노력을 아꼈습니다. 추천 시스템이 정말 유용해요!',
+      highlight: '효율적인 복지 정보 탐색'
     },
     {
       name: '정○○',
-      age: 38,
-      treatment: '보철치료',
+      age: 52,
+      service: '장애인 복지',
       rating: 5,
-      content: '앞니 보철을 했는데 색상이랑 모양이 완전 자연스러워요. 친구들도 치료한 걸 모를 정도입니다. 디지털 장비로 정밀하게 만들어주셔서 착용감도 완벽해요.',
-      highlight: '자연스러운 보철물'
+      content: '장애인 복지 정책과 지원금 정보를 쉽게 비교하고 신청할 수 있었습니다. 복지 서비스 추천 덕분에 실질적인 도움을 받았어요.',
+      highlight: '실질적 지원 정보 제공'
+    },
+    {
+      name: '김○○',
+      age: 38,
+      service: '가족 복지',
+      rating: 5,
+      content: '가족을 위한 다양한 복지 혜택을 한눈에 볼 수 있어 좋았습니다. 상담 서비스도 친절해서 만족도가 높아요.',
+      highlight: '친절한 상담 서비스'
     }
   ];
 
   const stats = [
     {
       icon: Users,
-      number: '5,000+',
-      label: '치료 환자',
-      description: '20년간 축적된 풍부한 임상경험'
+      number: '10,000+',
+      label: '누적 이용자',
+      description: '전국 복지 서비스 추천 누적 이용자 수'
     },
     {
       icon: Star,
-      number: '98%',
+      number: '97%',
       label: '만족도',
-      description: '환자분들의 높은 만족도'
+      description: '실제 이용자 후기 기반 높은 만족도'
     },
     {
       icon: Award,
-      number: '100%',
-      label: '재방문율',
-      description: '신뢰를 바탕으로 한 지속적 관계'
+      number: '1위',
+      label: '추천 플랫폼',
+      description: '복지 서비스 추천 분야 1위'
     },
     {
       icon: Heart,
-      number: '24/7',
-      label: '응급 대응',
-      description: '언제든 도움이 필요할 때'
+      number: '365일',
+      label: '상담 지원',
+      description: '연중무휴 온라인 상담 지원'
     }
   ];
 
@@ -84,7 +84,7 @@ const TestimonialsSection: React.FC = () => {
   };
 
   return (
-    <section className="section-padding bg-gradient-to-br from-gray-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors duration-300">
+    <section id="testimonials" className="section-padding bg-gradient-to-br from-gray-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors duration-300">
       <div className="container-max">
         {/* Header */}
         <motion.div
@@ -95,10 +95,10 @@ const TestimonialsSection: React.FC = () => {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4 transition-colors duration-300">
-            환자 후기
+            이용자 후기
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto transition-colors duration-300">
-            박영진치과에서 치료받으신 환자분들의 생생한 후기를 확인해보세요
+            복지 서비스 추천 플랫폼을 통해 실제로 도움을 받은 이용자들의 생생한 후기를 확인해보세요.
           </p>
         </motion.div>
 
@@ -180,7 +180,7 @@ const TestimonialsSection: React.FC = () => {
                   {testimonials[currentTestimonial].name} ({testimonials[currentTestimonial].age}세)
                 </div>
                 <div className="text-primary-600 dark:text-primary-400 font-medium transition-colors duration-300">
-                  {testimonials[currentTestimonial].treatment} 치료
+                  {testimonials[currentTestimonial].service}
                 </div>
               </div>
             </motion.div>
@@ -259,7 +259,7 @@ const TestimonialsSection: React.FC = () => {
                     {testimonial.name}
                   </div>
                   <div className="text-primary-600 dark:text-primary-400 text-xs font-medium transition-colors duration-300">
-                    {testimonial.treatment}
+                    {testimonial.service}
                   </div>
                 </div>
                 <div className="w-8 h-8 bg-gradient-to-br from-primary-500 to-primary-600 rounded-full flex items-center justify-center text-white font-bold text-sm">
@@ -280,19 +280,19 @@ const TestimonialsSection: React.FC = () => {
         >
           <div className="bg-gradient-to-br from-primary-500 to-primary-600 dark:from-primary-600 dark:to-primary-700 rounded-3xl p-8 lg:p-12 text-white transition-colors duration-300">
             <h3 className="text-2xl lg:text-3xl font-bold mb-4">
-              여러분도 건강한 미소의 주인공이 되어보세요
+              나에게 꼭 맞는 복지 혜택, 지금 확인해보세요!
             </h3>
             <p className="text-lg opacity-90 mb-8">
-              20년 경력의 전문의가 여러분의 소중한 치아를 책임지겠습니다
+              다양한 복지 서비스와 지원 정책을 쉽고 빠르게 추천받고, 전문가 상담까지 한 번에!
             </p>
             <motion.a
-              href="tel:02-712-5678"
+              href="#recommend"
               className="inline-flex items-center gap-3 bg-white dark:bg-gray-100 text-primary-600 dark:text-primary-700 font-bold py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <span>지금 바로 상담 예약</span>
-              <span className="text-lg">📞</span>
+              <span>복지 서비스 추천받기</span>
+              <span className="text-lg">🎯</span>
             </motion.a>
           </div>
         </motion.div>

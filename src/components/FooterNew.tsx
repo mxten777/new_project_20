@@ -41,27 +41,27 @@ const FooterNew: React.FC = () => {
   const contactInfo = [
     {
       icon: Phone,
-      label: '전화번호',
-      value: '02-712-5678',
-      link: 'tel:02-712-5678'
+      label: '상담전화',
+      value: '1544-2025',
+      link: 'tel:1544-2025'
     },
     {
       icon: MapPin,
       label: '주소',
-      value: '서울시 용산구 후암동',
+      value: '서울시 복지로 100',
       link: '#'
     },
     {
       icon: Clock,
-      label: '진료시간',
-      value: '월-금 09:00-18:00',
+      label: '상담시간',
+      value: '평일 09:00-18:00',
       link: '#'
     },
     {
       icon: Mail,
       label: '이메일',
-      value: 'info@pyjdental.co.kr',
-      link: 'mailto:info@pyjdental.co.kr'
+      value: 'help@welfare-service.kr',
+      link: 'mailto:help@welfare-service.kr'
     }
   ];
 
@@ -72,19 +72,19 @@ const FooterNew: React.FC = () => {
   ];
 
   const quickLinks = [
-    { name: '병원 소개', href: '#about' },
-    { name: '진료 안내', href: '#services' },
-    { name: '환자 후기', href: '#testimonials' },
-    { name: '진료 예약', href: '#contact' },
-    { name: '오시는 길', href: '#location' },
+    { name: '플랫폼 소개', href: '#about' },
+    { name: '복지정보', href: '#services' },
+    { name: '이용자 후기', href: '#testimonials' },
+    { name: '복지 추천받기', href: '#recommend' },
+    { name: '이용 안내', href: '#guide' },
     { name: '공지사항', href: '#notice' }
   ];
 
   const stats = [
-    { number: '20+', label: '년 경력' },
-    { number: '5,000+', label: '치료 환자' },
-    { number: '98%', label: '만족도' },
-    { number: '24/7', label: '응급 대응' }
+    { number: '10,000+', label: '누적 이용자' },
+    { number: '97%', label: '만족도' },
+    { number: '1위', label: '추천 플랫폼' },
+    { number: '365일', label: '상담 지원' }
   ];
 
   return (
@@ -106,7 +106,7 @@ const FooterNew: React.FC = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              구강 건강 정보 뉴스레터 구독
+              복지 정보 뉴스레터 구독
             </motion.h3>
             <motion.p 
               className="text-lg opacity-90 mb-8 max-w-2xl mx-auto"
@@ -115,7 +115,7 @@ const FooterNew: React.FC = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              전문의가 직접 전하는 구강 건강 관리법과 최신 치과 정보를 받아보세요
+              최신 복지 정책, 지원금, 혜택 정보를 빠르게 받아보세요.
             </motion.p>
             
             <motion.form
@@ -175,22 +175,22 @@ const FooterNew: React.FC = () => {
                   <Stethoscope className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold">박영진치과의원</h3>
-                  <p className="text-sm text-gray-400 dark:text-gray-500">20년 경력 전문의</p>
+                  <h3 className="text-xl font-bold">복지 서비스 추천</h3>
+                  <p className="text-sm text-gray-400 dark:text-gray-500">전국 복지 정보 플랫폼</p>
                 </div>
               </div>
               
               <p className="text-gray-400 dark:text-gray-500 mb-6 leading-relaxed transition-colors duration-300">
-                환자 중심의 개인 맞춤 치료를 통해 자연치아를 최대한 보존하며, 
-                편안하고 안전한 진료환경을 제공합니다.
+                이용자 중심의 맞춤형 복지 추천으로 누구나 쉽고 빠르게 다양한 복지 혜택을 누릴 수 있습니다.
+                신뢰할 수 있는 정보와 전문 상담을 제공합니다.
               </p>
 
               {/* Trust Badges */}
               <div className="flex flex-wrap gap-4 mb-6">
                 {[
-                  { icon: Heart, text: '20년 경력' },
-                  { icon: Shield, text: '안전한 치료' },
-                  { icon: Award, text: '높은 만족도' }
+                  { icon: Heart, text: '맞춤형 복지 추천' },
+                  { icon: Shield, text: '신뢰할 수 있는 정보' },
+                  { icon: Award, text: '이용자 만족도 1위' }
                 ].map((badge, index) => (
                   <div key={index} className="flex items-center gap-2 text-sm text-gray-400 dark:text-gray-500 transition-colors duration-300">
                     <badge.icon className="w-4 h-4 text-primary-500 dark:text-primary-400" />
@@ -244,7 +244,7 @@ const FooterNew: React.FC = () => {
 
               {/* Operating Hours */}
               <div className="mt-6 p-4 bg-gray-800 rounded-lg">
-                <h5 className="font-semibold mb-3 text-primary-400">진료 시간</h5>
+                <h5 className="font-semibold mb-3 text-primary-400">상담 시간</h5>
                 <div className="space-y-2 text-sm">
                   <div className="flex justify-between">
                     <span className="text-gray-400 dark:text-gray-500">월 - 금</span>
@@ -252,15 +252,15 @@ const FooterNew: React.FC = () => {
                   </div>
                   <div className="flex justify-between">
                     <span className="text-gray-400 dark:text-gray-500">토요일</span>
-                    <span>09:00 - 15:00</span>
+                    <span>09:00 - 13:00</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-gray-400 dark:text-gray-500">점심시간</span>
-                    <span>12:30 - 13:30</span>
+                    <span>12:00 - 13:00</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-gray-400 dark:text-gray-500">일요일</span>
-                    <span className="text-red-400 dark:text-red-300">휴진</span>
+                    <span className="text-red-400 dark:text-red-300">휴무</span>
                   </div>
                 </div>
               </div>
@@ -297,7 +297,7 @@ const FooterNew: React.FC = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              <h4 className="text-lg font-semibold mb-6">치료 실적</h4>
+              <h4 className="text-lg font-semibold mb-6">서비스 실적</h4>
               <div className="grid grid-cols-2 gap-4">
                 {stats.map((stat, index) => (
                   <motion.div
@@ -316,14 +316,14 @@ const FooterNew: React.FC = () => {
                 className="mt-6 p-4 bg-gradient-to-r from-red-600 to-red-700 dark:from-red-700 dark:to-red-800 rounded-lg text-center transition-colors duration-300"
                 whileHover={{ scale: 1.02 }}
               >
-                <h5 className="font-semibold mb-2">응급 상황 시</h5>
+                <h5 className="font-semibold mb-2">긴급 복지 상담</h5>
                 <a
-                  href="tel:02-712-5678"
+                  href="tel:1544-2025"
                   className="text-lg font-bold hover:underline"
                 >
-                  📞 02-712-5678
+                  📞 1544-2025
                 </a>
-                <p className="text-xs mt-1 opacity-90">24시간 응급 대응</p>
+                <p className="text-xs mt-1 opacity-90">365일 상담 지원</p>
               </motion.div>
             </motion.div>
           </div>
@@ -336,10 +336,10 @@ const FooterNew: React.FC = () => {
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="text-center md:text-left">
               <p className="text-gray-400 text-sm">
-                Copyright © 2025 박영진치과의원. All rights reserved.
+                Copyright © 2025 복지 서비스 추천. All rights reserved.
               </p>
               <p className="text-gray-500 dark:text-gray-600 text-xs mt-1 transition-colors duration-300">
-                서울시 용산구 후암동 | 사업자등록번호: 000-00-00000
+                서울시 복지로 100 | 사업자등록번호: 000-00-00000
               </p>
             </div>
             

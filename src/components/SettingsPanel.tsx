@@ -137,7 +137,7 @@ const SettingsPanel: React.FC = () => {
                 <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded-xl">
                   <h4 className="font-semibold text-gray-900 dark:text-white mb-2">미리보기</h4>
                   <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                    박영진치과의원에서는 20년 경력의 전문의가 직접 진료하는 신뢰할 수 있는 치과 서비스를 제공합니다.
+                    복지 서비스 추천 플랫폼은 다양한 복지 정책과 지원 정보를 쉽고 빠르게 안내합니다. 나에게 꼭 맞는 복지 혜택을 지금 확인해보세요!
                   </p>
                 </div>
 
@@ -145,8 +145,8 @@ const SettingsPanel: React.FC = () => {
                 <button
                   onClick={() => {
                     setFontSize('medium');
-                    localStorage.removeItem('dental-theme');
-                    localStorage.removeItem('dental-font-size');
+                    localStorage.removeItem('welfare-theme');
+                    localStorage.removeItem('welfare-font-size');
                   }}
                   className="w-full py-3 px-4 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 rounded-lg font-medium transition-colors"
                 >

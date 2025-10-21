@@ -47,7 +47,7 @@ const BookingCalendar: React.FC = () => {
         slots.push({
           time: timeString,
           available: !isBooked,
-          doctorName: '박영진 원장'
+          doctorName: '복지 상담 매니저'
         });
       }
     }
@@ -85,7 +85,7 @@ const BookingCalendar: React.FC = () => {
         date,
         slots: generateTimeSlots(date),
         isHoliday,
-        holidayName: isHoliday ? '휴진' : undefined
+        holidayName: isHoliday ? '휴무' : undefined
       });
     }
     
@@ -139,14 +139,14 @@ const BookingCalendar: React.FC = () => {
   };
 
   const treatmentTypes = [
-    '일반 검진',
-    '충치 치료',
-    '스케일링',
-    '임플란트',
-    '교정 상담',
-    '미백 치료',
-    '신경 치료',
-    '잇몸 치료'
+  '주거 지원',
+  '돌봄 서비스',
+  '취업 지원',
+  '장애인 복지',
+  '가족 복지',
+  '청년 복지',
+  '노인 복지',
+  '기타 복지 상담'
   ];
 
   return (
@@ -161,10 +161,10 @@ const BookingCalendar: React.FC = () => {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-            온라인 예약
+            복지 상담 예약
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            간편하고 빠른 온라인 예약으로 원하는 시간에 진료를 받으세요
+            간편한 온라인 예약으로 원하는 시간에 복지 상담을 받아보세요.
           </p>
         </motion.div>
 
@@ -333,7 +333,7 @@ const BookingCalendar: React.FC = () => {
               <div className="space-y-3 text-sm text-gray-600 dark:text-gray-400">
                 <div className="flex items-start gap-2">
                   <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
-                  <span>진료시간: 월-금 09:00-18:00, 토 09:00-15:00</span>
+                  <span>상담 가능 시간: 평일 09:00-18:00</span>
                 </div>
                 <div className="flex items-start gap-2">
                   <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
@@ -341,11 +341,11 @@ const BookingCalendar: React.FC = () => {
                 </div>
                 <div className="flex items-start gap-2">
                   <XCircle className="w-4 h-4 text-red-500 mt-0.5 flex-shrink-0" />
-                  <span>일요일 및 공휴일 휴진</span>
+                  <span>주말 및 공휴일 휴무</span>
                 </div>
                 <div className="flex items-start gap-2">
                   <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
-                  <span>예약 변경 및 취소는 진료 1일 전까지 가능</span>
+                  <span>예약 변경 및 취소는 상담 1일 전까지 가능</span>
                 </div>
               </div>
             </div>
