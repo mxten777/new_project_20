@@ -1,38 +1,121 @@
 @tailwind base;
+@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* 복지 서비스 테마 색상 */
-:root {
-  --primary: #3B82F6;
-  --primary-dark: #2563EB;
-  --primary-light: #BFDBFE;
+html, body {
+  font-family: 'Pretendard', 'Inter', 'Montserrat', sans-serif;
+  background-color: #F3F4F6;
+  color: #1F2937;
+  min-height: 100vh;
+  letter-spacing: 0.01em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* 커스텀 유틸리티 클래스 */
-@layer utilities {
-  .text-primary {
-    color: var(--primary);
-  }
-  
-  .bg-primary {
-    background-color: var(--primary);
-  }
-  
-  .bg-primary-dark {
-    background-color: var(--primary-dark);
-  }
-  
-  .bg-primary-light {
-    background-color: var(--primary-light);
-  }
+body.dark {
+  background-color: #111827;
+  color: #F3F4F6;
 }
+
+::-webkit-scrollbar {
+  width: 8px;
+  background: #FFFFFF;
+}
+::-webkit-scrollbar-thumb {
+  background: #60A5FA;
+  border-radius: 8px;
+}
+
+.premium-gradient {
+  background: linear-gradient(90deg, #3B82F6 0%, #60A5FA 100%);
+}
+.premium-shadow {
+  box-shadow: 0 4px 24px 0 rgba(59, 130, 246, 0.12);
+}
+.card-shadow {
+  box-shadow: 0 2px 8px 0 rgba(31, 41, 55, 0.08);
+}
+.divider {
+  border-bottom: 1px solid #E5E7EB;
+  margin: 1.5rem 0;
+}
+
+.fadein {
+  animation: fadein 0.5s ease-in;
+}
+.shimmer {
+  animation: shimmer 1.5s infinite linear;
+  background: linear-gradient(90deg, #F3F4F6 25%, #E5E7EB 50%, #F3F4F6 75%);
+  background-size: 1400px 100%;
+}
+
+@keyframes fadein {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes shimmer {
+  0% { background-position: -700px 0; }
+  100% { background-position: 700px 0; }
+}
+
 
 /* 글로벌 스타일 */
 body {
   font-family: 'Pretendard', 'Inter', 'Noto Sans KR', 'Apple SD Gothic Neo', 'SF Pro', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
   line-height: 1.6;
-}
+    background-color: var(--surface);
+    color: var(--neutral-dark);
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  .dark body {
+    background-color: var(--surface-darkmode);
+    color: var(--neutral-darkmode);
+  }
+  @layer utilities {
+    .shadow-premium {
+      box-shadow: 0 4px 24px 0 rgba(60, 80, 180, 0.08);
+    }
+    .shadow-card {
+      box-shadow: 0 2px 12px 0 rgba(60, 80, 180, 0.06);
+    }
+    .shadow-input {
+      box-shadow: 0 1px 4px 0 rgba(60, 80, 180, 0.04);
+    }
+    .rounded-premium {
+      border-radius: 1.25rem;
+    }
+    .rounded-card {
+      border-radius: 1rem;
+    }
+    .rounded-input {
+      border-radius: 0.75rem;
+    }
+    .fade-in {
+      animation: fadeIn 0.5s ease-in;
+    }
+    .fade-out {
+      animation: fadeOut 0.5s ease-out;
+    }
+    .space-xs { margin: 0.25rem; }
+    .space-sm { margin: 0.5rem; }
+    .space-md { margin: 1rem; }
+    .space-lg { margin: 1.5rem; }
+    .space-xl { margin: 2rem; }
+    .space-2xl { margin: 3rem; }
+    .space-3xl { margin: 4rem; }
+  }
+
+  @keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  @keyframes fadeOut {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+
 
 /* 스크롤바 스타일링 */
 ::-webkit-scrollbar {

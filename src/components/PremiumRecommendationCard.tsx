@@ -1,5 +1,4 @@
-import React from 'react';
-import { Star, Heart, ExternalLink, Share2 } from 'lucide-react';
+import { Heart, ExternalLink, Share2 } from 'lucide-react';
 import { RecommendationResult } from '../utils/recommendationEngine';
 
 interface PremiumRecommendationCardProps {
