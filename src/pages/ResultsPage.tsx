@@ -26,28 +26,29 @@ export default function ResultsPage() {
     // localStorage에서 사용자 프로필 불러오기
     const savedProfile = localStorage.getItem('userProfile')
     if (!savedProfile) {
-      navigate('/profile')
-      return
+      setUserProfile(null)
+      setRecommendations([])
+    } else {
+      const profile = JSON.parse(savedProfile) as UserProfile
+      setUserProfile(profile)
+      // 추천엔진 타입 불러오기
+      const savedEngineType = localStorage.getItem('engineType') || 'ai'
+      setEngineType(savedEngineType)
+      // 추천 결과 생성 (엔진 타입별 분기)
+      let results: RecommendationResult[] = []
+      if (savedEngineType === 'ai') {
+        results = recommendationEngine.recommend(profile)
+      } else if (savedEngineType === 'rule') {
+        // 룰 기반 추천: 매칭 점수 60점 이상만 추천
+        results = recommendationEngine.recommend(profile).filter(r => r.matchScore >= 60)
+      } else if (savedEngineType === 'hybrid') {
+        // 혼합: 상위 3개 AI + 2개 룰 기반(중복 제외)
+        const aiResults = recommendationEngine.recommend(profile).slice(0, 3)
+        const ruleResults = recommendationEngine.recommend(profile).filter(r => r.matchScore >= 60 && !aiResults.some(a => a.service.id === r.service.id)).slice(0, 2)
+        results = [...aiResults, ...ruleResults]
+      }
+      setRecommendations(results)
     }
-    const profile = JSON.parse(savedProfile) as UserProfile
-    setUserProfile(profile)
-    // 추천엔진 타입 불러오기
-    const savedEngineType = localStorage.getItem('engineType') || 'ai'
-    setEngineType(savedEngineType)
-    // 추천 결과 생성 (엔진 타입별 분기)
-    let results: RecommendationResult[] = []
-    if (savedEngineType === 'ai') {
-      results = recommendationEngine.recommend(profile)
-    } else if (savedEngineType === 'rule') {
-      // 룰 기반 추천: 매칭 점수 60점 이상만 추천
-      results = recommendationEngine.recommend(profile).filter(r => r.matchScore >= 60)
-    } else if (savedEngineType === 'hybrid') {
-      // 혼합: 상위 3개 AI + 2개 룰 기반(중복 제외)
-      const aiResults = recommendationEngine.recommend(profile).slice(0, 3)
-      const ruleResults = recommendationEngine.recommend(profile).filter(r => r.matchScore >= 60 && !aiResults.some(a => a.service.id === r.service.id)).slice(0, 2)
-      results = [...aiResults, ...ruleResults]
-    }
-    setRecommendations(results)
     // 즐겨찾기 불러오기
     const savedFavorites = localStorage.getItem('favorites')
     if (savedFavorites) {
@@ -117,23 +118,7 @@ export default function ResultsPage() {
     )
   }
 
-  if (!userProfile || recommendations.length === 0) {
-    return (
-      <div className="min-h-screen bg-surface text-neutral-dark flex items-center justify-center font-sans transition-premium">
-        <div className="text-center max-w-md mx-auto px-4 animate-fadein">
-          <div className="text-6xl mb-4">😔</div>
-          <h2 className="text-2xl font-bold text-neutral-dark mb-4">해당하는 복지서비스가 없습니다</h2>
-          <p className="text-neutral-dark mb-6">입력하신 조건에 맞는 복지서비스를 찾을 수 없습니다. 프로필을 다시 확인해보세요.</p>
-          <button
-            onClick={() => navigate('/profile')}
-            className="bg-primary text-white px-6 py-3 rounded-2xl font-medium hover:bg-primary-dark transition-premium shadow-premium"
-          >
-            프로필 다시 입력하기
-          </button>
-        </div>
-      </div>
-    )
-  }
+  // ...existing code...
 
   return (
     <div className="min-h-screen bg-surface text-neutral-dark flex flex-col font-sans transition-premium">
@@ -320,61 +305,66 @@ export default function ResultsPage() {
 
         {/* Recommendations List */}
         <div className="space-y-6">
-          {filteredRecommendations.map((recommendation) => {
-            const { service, priority } = recommendation;
-            const priorityBadge = getPriorityBadge(priority);
-            return (
-              <div key={service.id} className="p-5 rounded-2xl premium-shadow bg-surface flex flex-col gap-2 animate-fadein transition-premium hover:scale-[1.02] border border-primary-light">
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="text-2xl mr-1">{getCategoryIcon(service.category)}</span>
-                  <span className="font-bold text-lg text-primary">{service.title}</span>
-                  <span className="ml-auto px-2 py-1 rounded-full border text-xs font-bold bg-primary-light text-primary-dark border-primary">{service.category}</span>
-                  <span className={`ml-2 px-2 py-1 rounded-full border text-xs font-bold ${priorityBadge.className}`}>{priorityBadge.label}</span>
-                </div>
-                <div className="text-neutral-dark text-sm mb-2">{service.description}</div>
-                <div className="flex flex-wrap gap-2 mb-2">
-                  {service.benefits.slice(0, 2).map((benefit: string, idx: number) => (
-                    <span key={idx} className="px-2 py-1 rounded bg-accent-light text-accent-dark text-xs border border-accent">{benefit}</span>
-                  ))}
-                </div>
-                {service.amount && (
-                  <div className="text-sm text-primary font-semibold mb-1">지원금액: <span>{service.amount}</span></div>
-                )}
-                {service.processingTime && (
-                  <div className="text-xs text-neutral-dark mb-1">처리기간: <span>{service.processingTime}</span></div>
-                )}
-                <div className="mb-6">
-                  <p className="text-sm font-medium text-neutral-dark mb-2">신청 요건:</p>
-                  <ul className="space-y-1">
-                    {service.requirements.slice(0, 2).map((requirement: string, idx: number) => (
-                      <li key={idx} className="flex items-center space-x-2 text-sm text-neutral-dark">
-                        <span className="w-1.5 h-1.5 bg-neutral-dark rounded-full"></span>
-                        <span>{requirement}</span>
-                      </li>
+          {filteredRecommendations.length > 0 ? (
+            filteredRecommendations.map((recommendation) => {
+              const { service, priority } = recommendation;
+              const priorityBadge = getPriorityBadge(priority);
+              return (
+                <div key={service.id} className="p-5 rounded-2xl premium-shadow bg-surface flex flex-col gap-2 animate-fadein transition-premium hover:scale-[1.02] border border-primary-light">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="text-2xl mr-1">{getCategoryIcon(service.category)}</span>
+                    <span className="font-bold text-lg text-primary">{service.title}</span>
+                    <span className="ml-auto px-2 py-1 rounded-full border text-xs font-bold bg-primary-light text-primary-dark border-primary">{service.category}</span>
+                    <span className={`ml-2 px-2 py-1 rounded-full border text-xs font-bold ${priorityBadge.className}`}>{priorityBadge.label}</span>
+                  </div>
+                  <div className="text-neutral-dark text-sm mb-2">{service.description}</div>
+                  <div className="flex flex-wrap gap-2 mb-2">
+                    {service.benefits.slice(0, 2).map((benefit: string, idx: number) => (
+                      <span key={idx} className="px-2 py-1 rounded bg-accent-light text-accent-dark text-xs border border-accent">{benefit}</span>
                     ))}
-                  </ul>
+                  </div>
+                  {service.amount && (
+                    <div className="text-sm text-primary font-semibold mb-1">지원금액: <span>{service.amount}</span></div>
+                  )}
+                  {service.processingTime && (
+                    <div className="text-xs text-neutral-dark mb-1">처리기간: <span>{service.processingTime}</span></div>
+                  )}
+                  <div className="mb-6">
+                    <p className="text-sm font-medium text-neutral-dark mb-2">신청 요건:</p>
+                    <ul className="space-y-1">
+                      {service.requirements.slice(0, 2).map((requirement: string, idx: number) => (
+                        <li key={idx} className="flex items-center space-x-2 text-sm text-neutral-dark">
+                          <span className="w-1.5 h-1.5 bg-neutral-dark rounded-full"></span>
+                          <span>{requirement}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="flex gap-3 mt-2">
+                    <a href={service.website || '#'} target="_blank" rel="noopener noreferrer" className="px-3 py-2 rounded-2xl bg-primary text-white text-xs font-bold flex items-center gap-1 hover:bg-primary-dark transition-premium shadow-premium">
+                      <ExternalLink className="w-4 h-4" /> 신청/상세
+                    </a>
+                    <button type="button" className="px-3 py-2 rounded-2xl border text-xs font-bold flex items-center gap-1 bg-surface text-primary border-primary hover:bg-primary-light hover:text-primary-dark transition-premium shadow-card">
+                      자세히 보기
+                    </button>
+                  </div>
                 </div>
-                <div className="flex gap-3 mt-2">
-                  <a href={service.website || '#'} target="_blank" rel="noopener noreferrer" className="px-3 py-2 rounded-2xl bg-primary text-white text-xs font-bold flex items-center gap-1 hover:bg-primary-dark transition-premium shadow-premium">
-                    <ExternalLink className="w-4 h-4" /> 신청/상세
-                  </a>
-                  <button type="button" className="px-3 py-2 rounded-2xl border text-xs font-bold flex items-center gap-1 bg-surface text-primary border-primary hover:bg-primary-light hover:text-primary-dark transition-premium shadow-card">
-                    자세히 보기
-                  </button>
-                </div>
-              </div>
-            )
-          })}
+              )
+            })
+          ) : (
+            <div className="text-center py-12 animate-fadein">
+              <div className="text-6xl mb-4">😔</div>
+              <h3 className="text-xl font-semibold text-neutral-dark mb-2">추천 결과가 없습니다</h3>
+              <p className="text-neutral-dark mb-4">입력하신 조건에 맞는 복지서비스를 찾을 수 없습니다. 프로필을 다시 확인해보세요.</p>
+              <button
+                onClick={() => navigate('/profile')}
+                className="bg-primary text-white px-6 py-3 rounded-2xl font-medium hover:bg-primary-dark transition-premium shadow-premium"
+              >
+                프로필 다시 입력하기
+              </button>
+            </div>
+          )}
         </div>
-
-        {/* No Results */}
-        {filteredRecommendations.length === 0 && selectedCategory !== 'all' && (
-          <div className="text-center py-12 animate-fadein">
-            <div className="text-6xl mb-4">🔍</div>
-            <h3 className="text-xl font-semibold text-neutral-dark mb-2">해당 카테고리에 추천 서비스가 없습니다</h3>
-            <p className="text-neutral-dark">다른 카테고리를 선택해보세요.</p>
-          </div>
-        )}
       </main>
       <PremiumFooter />
     </div>
