@@ -1,15 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { MessageCircle } from 'lucide-react';
-import { FaRegSmile } from 'react-icons/fa';
+import { MessageCircle, Smile } from 'lucide-react';
 import PremiumButton from './PremiumButton.tsx';
 
 const HeroSection: React.FC = () => {
-  // 복지 서비스 추천 SPA용 features 예시 (필요시 사용)
-
-
   return (
-  <section id="home" className="relative min-h-screen flex items-center overflow-hidden">
+    <section id="home" className="relative min-h-screen flex items-center overflow-hidden">
       {/* Animated Background */}
       <div className="absolute inset-0 gradient-bg">
         {/* Animated circles */}
@@ -61,7 +57,7 @@ const HeroSection: React.FC = () => {
             {/* Visual Smile Icon */}
             <div className="flex justify-center mb-8">
               <div className="w-32 h-32 rounded-full bg-yellow-400 border-4 border-blue-400 flex items-center justify-center shadow-lg">
-                <FaRegSmile className="text-white" style={{ fontSize: '3.5rem' }} />
+                <Smile className="text-white" size={56} />
               </div>
             </div>
             {/* Badge */}
@@ -117,9 +113,6 @@ const HeroSection: React.FC = () => {
               </p>
             </motion.div>
 
-            {/* Features */}
-            {/* 필요시 features 영역 사용 가능 */}
-
             {/* CTA Buttons */}
             <motion.div
               className="flex flex-col gap-4 px-4 max-w-md mx-auto lg:max-w-none lg:mx-0 lg:flex-row"
@@ -138,9 +131,6 @@ const HeroSection: React.FC = () => {
               </PremiumButton>
             </motion.div>
           </div>
-
-          {/* Visual Element */}
-          {/* 필요시 시각적 요소 추가 가능 */}
         </div>
       </div>
       {/* Scroll Indicator */}

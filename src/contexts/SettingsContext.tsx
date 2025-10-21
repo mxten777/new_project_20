@@ -28,7 +28,7 @@ interface SettingsProviderProps {
 export const SettingsProvider: React.FC<SettingsProviderProps> = ({ children }) => {
   const [theme, setTheme] = useState<Theme>(() => {
     if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('welfare-theme');
+      const saved = localStorage.getItem('dental-theme');
       if (saved) return saved as Theme;
       return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
     }
@@ -37,7 +37,7 @@ export const SettingsProvider: React.FC<SettingsProviderProps> = ({ children }) 
 
   const [fontSize, setFontSize] = useState<FontSize>(() => {
     if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('welfare-font-size');
+      const saved = localStorage.getItem('dental-font-size');
       return (saved as FontSize) || 'medium';
     }
     return 'medium';
@@ -48,7 +48,8 @@ export const SettingsProvider: React.FC<SettingsProviderProps> = ({ children }) 
   };
 
   useEffect(() => {
-    localStorage.setItem('welfare-theme', theme);
+    localStorage.setItem('dental-theme', theme);
+    
     const root = document.documentElement;
     if (theme === 'dark') {
       root.classList.add('dark');
@@ -58,7 +59,8 @@ export const SettingsProvider: React.FC<SettingsProviderProps> = ({ children }) 
   }, [theme]);
 
   useEffect(() => {
-    localStorage.setItem('welfare-font-size', fontSize);
+    localStorage.setItem('dental-font-size', fontSize);
+    
     const root = document.documentElement;
     root.classList.remove('text-small', 'text-medium', 'text-large');
     root.classList.add(`text-${fontSize}`);

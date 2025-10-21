@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { saveUserProfile, auth } from "../firebase";
 
 export type UserProfile = {
   name: string;
@@ -57,21 +56,17 @@ export default function UserProfileForm({ onSubmit }: { onSubmit: (profile: User
     setError(null);
     setSubmitted(true);
     setEditing(false);
-    const user = auth.currentUser;
-    if (user) {
-      try {
-        await saveUserProfile(user.uid, profile);
-        onSubmit(profile);
-      } catch (error) {
-        setError("프로필 저장 중 오류가 발생했습니다.");
-        setSubmitted(false);
-        return;
-      }
-    } else {
-      setError("로그인 후 이용해 주세요.");
+    
+    try {
+      // 로컬 스토리지에 프로필 저장
+      localStorage.setItem('userProfile', JSON.stringify(profile));
+      onSubmit(profile);
+    } catch (error) {
+      setError("프로필 저장 중 오류가 발생했습니다.");
       setSubmitted(false);
       return;
     }
+    
     setTimeout(() => setSubmitted(false), 2000);
   };
 

@@ -19,78 +19,78 @@ const ServicesSection: React.FC = () => {
   const services = [
     {
       icon: Activity,
-      title: '기초생활수급',
-      description: '생계급여, 주거급여, 의료급여, 교육급여 등 기초생활보장 지원',
+      title: '충치치료',
+      description: '정밀한 진단과 개인 맞춤형 치료로 자연치아를 최대한 보존합니다',
       details: [
-        '생계급여 신청 및 지원',
-        '주거급여 맞춤 상담',
-        '의료급여 혜택 안내',
-        '교육급여 신청 지원'
+        '미세현미경을 활용한 정밀 치료',
+        '자연치아 보존 우선 원칙',
+        '무통 마취 시스템',
+        '당일 치료 완료 가능'
       ],
       color: 'from-blue-500 to-blue-600',
       bgColor: 'bg-blue-50'
     },
     {
       icon: Leaf,
-      title: '장애인복지',
-      description: '장애인연금, 활동지원, 보조기구 지원 등 장애인 맞춤 복지서비스',
+      title: '잇몸치료',
+      description: '체계적인 잇몸 관리와 예방 프로그램으로 건강한 치아를 유지합니다',
       details: [
-        '장애인연금 신청 지원',
-        '활동지원서비스 연결',
-        '보조기구 지원 안내',
-        '재활서비스 정보 제공'
+        '스케일링 및 잇몸 치료',
+        '치주질환 전문 치료',
+        '개인별 관리 프로그램',
+        '정기검진 시스템'
       ],
       color: 'from-green-500 to-green-600',
       bgColor: 'bg-green-50'
     },
     {
       icon: Stethoscope,
-      title: '노인복지',
-      description: '기초연금, 노인돌봄서비스, 요양보험 등 어르신 전용 복지혜택',
+      title: '신경치료',
+      description: '첨단 장비를 활용한 정확하고 안전한 근관치료를 시행합니다',
       details: [
-        '기초연금 신청 지원',
-        '노인돌봄서비스 연결',
-        '장기요양보험 안내',
-        '노인일자리 정보 제공'
+        '디지털 장비 활용',
+        '정확한 근관 치료',
+        '감염 차단 시스템',
+        '치료 성공률 극대화'
       ],
       color: 'from-red-500 to-red-600',
       bgColor: 'bg-red-50'
     },
     {
       icon: Sparkles,
-      title: '아동·청소년복지',
-      description: '아동수당, 양육수당, 청소년 지원금 등 아이들을 위한 복지서비스',
+      title: '미백치료',
+      description: '안전하고 효과적인 전문가 미백으로 자신감 넘치는 미소를 선사합니다',
       details: [
-        '아동수당 신청 지원',
-        '양육수당 안내',
-        '청소년 특별지원',
-        '교육비 지원 정보'
+        '전문가용 미백 시스템',
+        '개인별 맞춤 농도',
+        '안전한 성분 사용',
+        '지속적인 사후 관리'
       ],
       color: 'from-yellow-500 to-yellow-600',
       bgColor: 'bg-yellow-50'
     },
     {
       icon: Wrench,
-      title: '청년복지',
-      description: '청년수당, 취업지원, 주거지원 등 청년을 위한 맞춤 복지정책',
+      title: '임플란트',
+      description: '3D CT 정밀 진단과 1:1 맞춤 상담으로 최적의 임플란트 치료를 제공합니다',
       details: [
-        '청년수당 신청 지원',
-        '취업지원서비스 연결',
-        '청년 주거지원 안내',
-        '창업지원 정보 제공'
+        '3D CT 정밀 진단',
+        '가이드 수술 시스템',
+        '프리미엄 임플란트',
+        '평생 보장 서비스'
       ],
       color: 'from-purple-500 to-purple-600',
       bgColor: 'bg-purple-50'
     },
     {
       icon: Crown,
-      title: '긴급복지',
-      description: '긴급지원, 위기가구 지원, 한시적 생계지원 등 응급상황 복지서비스',
+      title: '보철치료',
+      description: '개인별 맞춤 제작으로 자연스럽고 편안한 보철물을 제공합니다',
       details: [
-        '긴급생계지원 신청',
-        '의료비 긴급지원',
-        '주거비 긴급지원',
-        '위기상황 상담지원'
+        '디지털 스캔 정밀 제작',
+        '자연스러운 색상 매칭',
+        '편안한 착용감',
+        '내구성 극대화'
       ],
       color: 'from-indigo-500 to-indigo-600',
       bgColor: 'bg-indigo-50'
@@ -100,14 +100,14 @@ const ServicesSection: React.FC = () => {
   const campaignOffers = [
     {
       icon: Sparkles,
-      title: '복지급여 통합 신청',
-      description: '모든 복지급여를 한 번에 신청하고 맞춤 혜택을 받아보세요',
+      title: '전 치료 30% 할인',
+      description: '모든 진료과목 30% 특가 + 추가 케어 서비스 무료 제공',
       badge: 'HOT'
     },
     {
       icon: Shield,
-      title: '복지 전문 상담',
-      description: '1:1 맞춤 상담으로 놓치는 복지혜택 없이 완벽 지원',
+      title: '프리미엄 검진 패키지',
+      description: '3D CT + 정밀 검진 + 전문의 1:1 맞춤 상담',
       badge: 'NEW'
     }
   ];
@@ -124,10 +124,10 @@ const ServicesSection: React.FC = () => {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4 transition-colors duration-300">
-            복지 서비스
+            진료 서비스
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto transition-colors duration-300">
-            전국민을 위한 맞춤형 복지 정보와 신청 지원으로 누구나 쉽게 복지 혜택을 받을 수 있습니다
+            최신 의료 장비와 전문적인 기술로 개개인에게 최적화된 맞춤형 치료 서비스를 제공합니다
           </p>
         </motion.div>
 
@@ -228,7 +228,7 @@ const ServicesSection: React.FC = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              복지 혜택 특별 안내
+              Grand Opening 특별 혜택
             </motion.h3>
             <motion.div
               className="inline-flex items-center gap-2 bg-yellow-400 dark:bg-yellow-500 text-primary-900 dark:text-gray-900 px-4 py-2 rounded-full font-bold transition-colors duration-300"
@@ -245,7 +245,7 @@ const ServicesSection: React.FC = () => {
               }}
             >
               <Clock className="w-4 h-4" />
-              📅 2025년 연중 상시 지원 (무료 상담)
+              📅 2025년 10월 ~ 12월 (한정 특가)
             </motion.div>
           </div>
 
@@ -290,12 +290,12 @@ const ServicesSection: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.8 }}
           >
             <motion.a
-              href="tel:1544-2025"
+              href="tel:02-712-5678"
               className="inline-flex items-center gap-3 bg-white text-primary-600 font-bold py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <span>지금 바로 복지 상담받기</span>
+              <span>지금 바로 예약하고 혜택 받기</span>
               <ArrowRight className="w-5 h-5" />
             </motion.a>
           </motion.div>
@@ -310,15 +310,15 @@ const ServicesSection: React.FC = () => {
           transition={{ duration: 0.6 }}
         >
           <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white mb-8 transition-colors duration-300">
-            복지 신청 과정
+            치료 과정
           </h3>
           
           <div className="grid md:grid-cols-4 gap-6">
             {[
-              { step: '01', title: '복지 상담', desc: '간편한 전화 상담' },
-              { step: '02', title: '자격 확인', desc: '복지 대상 여부 확인' },
-              { step: '03', title: '신청 지원', desc: '맞춤 신청서 작성' },
-              { step: '04', title: '혜택 수령', desc: '복지급여 지급 완료' }
+              { step: '01', title: '전화 상담', desc: '간편한 전화 예약' },
+              { step: '02', title: '정밀 검진', desc: '3D CT 정밀 진단' },
+              { step: '03', title: '치료 계획', desc: '개인 맞춤 상담' },
+              { step: '04', title: '안전한 치료', desc: '전문적인 시술' }
             ].map((process, index) => (
               <motion.div
                 key={index}

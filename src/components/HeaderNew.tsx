@@ -14,24 +14,12 @@ const HeaderNew: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleNavClick = (href: string) => {
-    if (href.startsWith('#')) {
-      const element = document.getElementById(href.substring(1));
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
-    } else {
-      window.location.href = href;
-    }
-    setIsMenuOpen(false);
-  };
-
   const navigation = [
     { name: '홈', href: '/' },
-    { name: '복지정보', href: '#services' },
-    { name: '플랫폼 소개', href: '#about' },
-    { name: '복지 추천받기', href: '/recommend' },
-    { name: '이용자후기', href: '#testimonials' },
+    { name: '진료안내', href: '#services' },
+    { name: '병원소개', href: '#about' },
+    { name: '온라인 예약', href: '/booking' },
+    { name: '환자후기', href: '#testimonials' },
   ];
 
   return (
@@ -43,16 +31,16 @@ const HeaderNew: React.FC = () => {
             <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
               <div className="flex items-center gap-2">
                 <Phone className="w-4 h-4 flex-shrink-0" />
-                <span className="font-semibold">1544-2025</span>
+                <span className="font-semibold">02-712-5678</span>
               </div>
               <div className="flex items-center gap-2">
                 <Clock className="w-4 h-4 flex-shrink-0" />
-                <span className="text-center sm:text-left">상담: 평일 09:00-18:00</span>
+                <span className="text-center sm:text-left">월-금 09:00-18:00 | 토 09:00-15:00</span>
               </div>
             </div>
             <div className="flex items-center gap-2">
               <MapPin className="w-4 h-4 flex-shrink-0" />
-              <span>서울시 복지로 100</span>
+              <span>서울시 용산구 후암동</span>
             </div>
           </div>
         </div>
@@ -82,8 +70,8 @@ const HeaderNew: React.FC = () => {
                   <Stethoscope className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <h1 className="text-xl font-bold text-gray-900">복지 서비스 추천</h1>
-                  <p className="text-xs text-gray-600">전국 복지 정보 플랫폼</p>
+                  <h1 className="text-xl font-bold text-gray-900">박영진치과의원</h1>
+                  <p className="text-xs text-gray-600">20년 경력 전문의</p>
                 </div>
               </div>
             </motion.div>
@@ -91,28 +79,28 @@ const HeaderNew: React.FC = () => {
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center gap-8">
               {navigation.map((item) => (
-                <motion.button
+                <motion.a
                   key={item.name}
-                  onClick={() => handleNavClick(item.href)}
-                  className="text-gray-700 hover:text-primary-600 font-medium transition-colors cursor-pointer"
+                  href={item.href}
+                  className="text-gray-700 hover:text-primary-600 font-medium transition-colors"
                   whileHover={{ y: -2 }}
                   transition={{ duration: 0.2 }}
                 >
                   {item.name}
-                </motion.button>
+                </motion.a>
               ))}
             </div>
 
             {/* CTA Button & Mobile Menu */}
             <div className="flex items-center gap-4">
               <motion.a
-                href="#recommend"
+                href="tel:02-712-5678"
                 className="btn-primary hidden sm:flex items-center gap-2"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
                 <Phone className="w-4 h-4" />
-                복지 추천받기
+                진료 예약
               </motion.a>
 
               {/* Mobile Menu Button */}
@@ -143,16 +131,17 @@ const HeaderNew: React.FC = () => {
             >
               <div className="px-4 py-6 space-y-4">
                 {navigation.map((item, index) => (
-                  <motion.button
+                  <motion.a
                     key={item.name}
-                    onClick={() => handleNavClick(item.href)}
-                    className="block py-2 text-gray-700 hover:text-primary-600 font-medium w-full text-left"
+                    href={item.href}
+                    className="block py-2 text-gray-700 hover:text-primary-600 font-medium"
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1 }}
+                    onClick={() => setIsMenuOpen(false)}
                   >
                     {item.name}
-                  </motion.button>
+                  </motion.a>
                 ))}
                 <motion.a
                   href="tel:02-712-5678"
@@ -175,15 +164,15 @@ const HeaderNew: React.FC = () => {
             <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-8 text-sm text-gray-600">
               <div className="flex items-center gap-2">
                 <Stethoscope className="w-5 h-5 text-primary-500 flex-shrink-0" />
-                <span className="font-medium">전국 복지 정보</span>
+                <span className="font-medium">20년 경력 전문의</span>
               </div>
               <div className="flex items-center gap-2">
                 <Heart className="w-5 h-5 text-primary-500 flex-shrink-0" />
-                <span className="font-medium">맞춤형 복지 추천</span>
+                <span className="font-medium">최첨단 장비</span>
               </div>
               <div className="flex items-center gap-2">
                 <Shield className="w-5 h-5 text-primary-500 flex-shrink-0" />
-                <span className="font-medium">신뢰할 수 있는 정보</span>
+                <span className="font-medium">개인 맞춤 치료</span>
               </div>
             </div>
           </div>
