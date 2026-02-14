@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Star, Quote, ChevronLeft, ChevronRight, Heart, Award, Users } from 'lucide-react';
+import { Star, Quote, ChevronLeft, ChevronRight, Heart, Award, Users, Phone, Sparkles } from 'lucide-react';
 
 const TestimonialsSection: React.FC = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
@@ -84,27 +84,35 @@ const TestimonialsSection: React.FC = () => {
   };
 
   return (
-    <section className="section-padding bg-gradient-to-br from-gray-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors duration-300">
-      <div className="container-max">
+    <section className="section-padding section-warm relative overflow-hidden">
+      {/* Background accents */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-gold-100/30 to-transparent rounded-full blur-3xl" />
+      <div className="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-tr from-navy-100/20 to-transparent rounded-full blur-3xl" />
+
+      <div className="container-max relative z-10">
         {/* Header */}
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-20"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4 transition-colors duration-300">
+          <div className="section-ornament">
+            <span className="text-gold-600 text-xs font-bold tracking-[0.2em] uppercase">Testimonials</span>
+          </div>
+          <h2 className="text-4xl lg:text-5xl font-black text-navy-800 mb-4 tracking-tight">
             환자 후기
           </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto transition-colors duration-300">
+          <div className="gold-divider" />
+          <p className="text-lg text-navy-600/70 max-w-3xl mx-auto mt-6 leading-relaxed">
             박영진치과에서 치료받으신 환자분들의 생생한 후기를 확인해보세요
           </p>
         </motion.div>
 
         {/* Statistics */}
         <motion.div
-          className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16"
+          className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-20"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -113,34 +121,37 @@ const TestimonialsSection: React.FC = () => {
           {stats.map((stat, index) => (
             <motion.div
               key={index}
-              className="bg-white dark:bg-gray-800 rounded-2xl p-6 text-center shadow-lg hover:shadow-xl transition-all duration-300"
+              className="bg-white rounded-2xl p-6 text-center shadow-[0_4px_20px_rgba(27,77,142,0.06)] hover:shadow-[0_15px_40px_rgba(200,164,94,0.12)] border border-cream-300/50 hover:border-gold-300/50 transition-all duration-400"
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               whileHover={{ y: -5 }}
             >
-              <div className="w-12 h-12 bg-gradient-to-br from-primary-500 to-primary-600 rounded-xl flex items-center justify-center mx-auto mb-4">
-                <stat.icon className="w-6 h-6 text-white" />
+              <div className="w-12 h-12 bg-gradient-to-br from-navy-600 to-navy-800 rounded-xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+                <stat.icon className="w-6 h-6 text-gold-400" />
               </div>
-              <div className="text-3xl font-bold text-primary-600 dark:text-primary-400 mb-2 transition-colors duration-300">{stat.number}</div>
-              <div className="font-semibold text-gray-900 dark:text-white mb-1 transition-colors duration-300">{stat.label}</div>
-              <div className="text-sm text-gray-600 dark:text-gray-300 transition-colors duration-300">{stat.description}</div>
+              <div className="text-3xl font-black text-gradient mb-2">{stat.number}</div>
+              <div className="font-bold text-navy-800 mb-1">{stat.label}</div>
+              <div className="text-sm text-navy-600/60">{stat.description}</div>
             </motion.div>
           ))}
         </motion.div>
 
         {/* Main Testimonial Carousel */}
         <motion.div
-          className="relative glass-card bg-white/90 dark:bg-gray-800/90 rounded-3xl p-8 lg:p-12 shadow-xl mb-16 transition-colors duration-300"
+          className="relative bg-white rounded-3xl p-8 lg:p-14 shadow-[0_10px_50px_rgba(27,77,142,0.08)] mb-20 border border-cream-300/50 overflow-hidden"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
+          {/* Top gold accent */}
+          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-gold-500 to-transparent" />
+
           <div className="flex justify-center mb-8">
-            <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center">
-              <Quote className="w-8 h-8 text-primary-600" />
+            <div className="w-16 h-16 bg-gradient-to-br from-gold-100 to-gold-200 rounded-full flex items-center justify-center border-2 border-gold-300/50">
+              <Quote className="w-8 h-8 text-gold-600" />
             </div>
           </div>
 
@@ -154,32 +165,32 @@ const TestimonialsSection: React.FC = () => {
               transition={{ duration: 0.5 }}
             >
               {/* Stars */}
-              <div className="flex justify-center mb-6">
+              <div className="flex justify-center mb-6 gap-1">
                 {Array.from({ length: testimonials[currentTestimonial].rating }).map((_, i) => (
-                  <Star key={i} className="w-6 h-6 fill-yellow-400 text-yellow-400" />
+                  <Star key={i} className="w-5 h-5 fill-gold-500 text-gold-500" />
                 ))}
               </div>
 
               {/* Highlight Badge */}
-              <div className="inline-flex items-center gap-2 bg-primary-100 dark:bg-primary-900/50 text-primary-700 dark:text-primary-300 px-4 py-2 rounded-full text-sm font-semibold mb-6 transition-colors duration-300">
-                <Heart className="w-4 h-4" />
+              <div className="inline-flex items-center gap-2 bg-gold-50 text-gold-700 px-5 py-2 rounded-full text-sm font-bold mb-6 border border-gold-200/70">
+                <Sparkles className="w-4 h-4" />
                 {testimonials[currentTestimonial].highlight}
               </div>
 
               {/* Content */}
-              <blockquote className="text-lg lg:text-xl text-gray-700 dark:text-gray-300 leading-relaxed mb-8 max-w-4xl mx-auto transition-colors duration-300">
+              <blockquote className="text-lg lg:text-xl text-navy-700 leading-relaxed mb-8 max-w-4xl mx-auto font-medium italic" style={{ fontFamily: "'Noto Serif KR', serif" }}>
                 "{testimonials[currentTestimonial].content}"
               </blockquote>
 
               {/* Patient Info */}
               <div className="flex flex-col items-center">
-                <div className="w-12 h-12 bg-gradient-to-br from-primary-500 to-primary-600 rounded-full flex items-center justify-center text-white font-bold text-lg mb-3">
+                <div className="w-12 h-12 bg-gradient-to-br from-navy-600 to-navy-800 rounded-full flex items-center justify-center text-gold-400 font-bold text-lg mb-3 shadow-md">
                   {testimonials[currentTestimonial].name.charAt(0)}
                 </div>
-                <div className="font-semibold text-gray-900 dark:text-white transition-colors duration-300">
+                <div className="font-bold text-navy-800">
                   {testimonials[currentTestimonial].name} ({testimonials[currentTestimonial].age}세)
                 </div>
-                <div className="text-primary-600 dark:text-primary-400 font-medium transition-colors duration-300">
+                <div className="text-gold-600 font-bold text-sm">
                   {testimonials[currentTestimonial].treatment} 치료
                 </div>
               </div>
@@ -187,14 +198,14 @@ const TestimonialsSection: React.FC = () => {
           </AnimatePresence>
 
           {/* Navigation */}
-          <div className="flex justify-between items-center mt-8">
+          <div className="flex justify-between items-center mt-10">
             <motion.button
               onClick={prevTestimonial}
-              className="w-12 h-12 bg-gray-100 dark:bg-gray-700 hover:bg-primary-500 hover:text-white dark:hover:bg-primary-600 rounded-full flex items-center justify-center transition-all duration-300"
+              className="w-12 h-12 bg-navy-50 hover:bg-navy-600 rounded-full flex items-center justify-center transition-all duration-300 group border border-cream-300/50 hover:border-navy-600"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
             >
-              <ChevronLeft className="w-6 h-6 text-gray-600 dark:text-gray-300" />
+              <ChevronLeft className="w-5 h-5 text-navy-600 group-hover:text-white" />
             </motion.button>
 
             <div className="flex gap-2">
@@ -202,10 +213,10 @@ const TestimonialsSection: React.FC = () => {
                 <button
                   key={index}
                   onClick={() => setCurrentTestimonial(index)}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  className={`h-2.5 rounded-full transition-all duration-300 ${
                     index === currentTestimonial
-                      ? 'bg-primary-600 dark:bg-primary-400 w-8'
-                      : 'bg-gray-300 dark:bg-gray-600 hover:bg-primary-300 dark:hover:bg-primary-500'
+                      ? 'bg-gradient-to-r from-gold-500 to-gold-600 w-8'
+                      : 'bg-navy-200 hover:bg-gold-300 w-2.5'
                   }`}
                 />
               ))}
@@ -213,11 +224,11 @@ const TestimonialsSection: React.FC = () => {
 
             <motion.button
               onClick={nextTestimonial}
-              className="w-12 h-12 bg-gray-100 dark:bg-gray-700 hover:bg-primary-500 hover:text-white dark:hover:bg-primary-600 rounded-full flex items-center justify-center transition-all duration-300"
+              className="w-12 h-12 bg-navy-50 hover:bg-navy-600 rounded-full flex items-center justify-center transition-all duration-300 group border border-cream-300/50 hover:border-navy-600"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
             >
-              <ChevronRight className="w-6 h-6 text-gray-600 dark:text-gray-300" />
+              <ChevronRight className="w-5 h-5 text-navy-600 group-hover:text-white" />
             </motion.button>
           </div>
         </motion.div>
@@ -233,7 +244,7 @@ const TestimonialsSection: React.FC = () => {
           {testimonials.slice(0, 3).map((testimonial, index) => (
             <motion.div
               key={index}
-              className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300"
+              className="bg-white rounded-2xl p-6 shadow-[0_4px_20px_rgba(27,77,142,0.06)] hover:shadow-[0_15px_40px_rgba(200,164,94,0.12)] border border-cream-300/50 hover:border-gold-300/50 transition-all duration-400"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -241,28 +252,28 @@ const TestimonialsSection: React.FC = () => {
               whileHover={{ y: -5 }}
             >
               {/* Stars */}
-              <div className="flex mb-3">
+              <div className="flex mb-3 gap-0.5">
                 {Array.from({ length: testimonial.rating }).map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                  <Star key={i} className="w-4 h-4 fill-gold-500 text-gold-500" />
                 ))}
               </div>
 
               {/* Content Preview */}
-              <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4 transition-colors duration-300">
+              <p className="text-navy-600/70 text-sm leading-relaxed mb-4">
                 "{testimonial.content.slice(0, 80)}..."
               </p>
 
               {/* Patient Info */}
               <div className="flex items-center justify-between">
                 <div>
-                  <div className="font-semibold text-gray-900 dark:text-white text-sm transition-colors duration-300">
+                  <div className="font-bold text-navy-800 text-sm">
                     {testimonial.name}
                   </div>
-                  <div className="text-primary-600 dark:text-primary-400 text-xs font-medium transition-colors duration-300">
+                  <div className="text-gold-600 text-xs font-bold">
                     {testimonial.treatment}
                   </div>
                 </div>
-                <div className="w-8 h-8 bg-gradient-to-br from-primary-500 to-primary-600 rounded-full flex items-center justify-center text-white font-bold text-sm">
+                <div className="w-9 h-9 bg-gradient-to-br from-navy-600 to-navy-800 rounded-full flex items-center justify-center text-gold-400 font-bold text-sm shadow-md">
                   {testimonial.name.charAt(0)}
                 </div>
               </div>
@@ -272,28 +283,33 @@ const TestimonialsSection: React.FC = () => {
 
         {/* CTA Section */}
         <motion.div
-          className="text-center mt-16"
+          className="text-center mt-20"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <div className="bg-gradient-to-br from-primary-500 to-primary-600 dark:from-primary-600 dark:to-primary-700 rounded-3xl p-8 lg:p-12 text-white transition-colors duration-300">
-            <h3 className="text-2xl lg:text-3xl font-bold mb-4">
-              여러분도 건강한 미소의 주인공이 되어보세요
-            </h3>
-            <p className="text-lg opacity-90 mb-8">
-              20년 경력의 전문의가 여러분의 소중한 치아를 책임지겠습니다
-            </p>
-            <motion.a
-              href="tel:02-712-5678"
-              className="inline-flex items-center gap-3 bg-white dark:bg-gray-100 text-primary-600 dark:text-primary-700 font-bold py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <span>지금 바로 상담 예약</span>
-              <span className="text-lg">📞</span>
-            </motion.a>
+          <div className="bg-gradient-to-br from-navy-700 via-navy-800 to-navy-900 rounded-3xl p-8 lg:p-14 text-white relative overflow-hidden">
+            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold-500/50 to-transparent" />
+            <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-gold-500/10 to-transparent rounded-full blur-3xl" />
+
+            <div className="relative z-10">
+              <h3 className="text-2xl lg:text-3xl font-black mb-4">
+                여러분도 건강한 미소의 주인공이 되어보세요
+              </h3>
+              <p className="text-lg text-white/70 mb-8 max-w-2xl mx-auto leading-relaxed">
+                20년 경력의 전문의가 여러분의 소중한 치아를 책임지겠습니다
+              </p>
+              <motion.a
+                href="tel:02-712-5678"
+                className="inline-flex items-center gap-3 bg-gradient-to-r from-gold-500 to-gold-400 text-navy-900 font-extrabold py-4 px-10 rounded-xl shadow-gold-lg hover:shadow-gold transition-all duration-300"
+                whileHover={{ scale: 1.03, y: -2 }}
+                whileTap={{ scale: 0.97 }}
+              >
+                <Phone className="w-5 h-5" />
+                <span>지금 바로 상담 예약</span>
+              </motion.a>
+            </div>
           </div>
         </motion.div>
       </div>

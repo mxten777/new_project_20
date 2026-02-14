@@ -9,7 +9,7 @@ interface LoadingSpinnerProps {
 
 const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({
   size = 'md',
-  color = 'text-primary-600',
+  color = 'text-gold-600',
   text
 }) => {
   const sizes = {

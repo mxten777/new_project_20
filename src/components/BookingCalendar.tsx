@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Calendar, Clock, User, Phone, Mail, FileText, CheckCircle, XCircle, ChevronLeft, ChevronRight, CalendarDays } from 'lucide-react';
+import { Calendar, Clock, User, Phone, Mail, FileText, CheckCircle, XCircle, ChevronLeft, ChevronRight, CalendarDays, Sparkles } from 'lucide-react';
 import { TimeSlot, DaySchedule, Appointment, AppointmentFormData } from '../types/appointment';
 import PremiumButton from './PremiumButton';
 
@@ -150,20 +150,28 @@ const BookingCalendar: React.FC = () => {
   ];
 
   return (
-    <section className="section-padding bg-gradient-to-br from-blue-50 via-white to-primary-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors duration-300">
-      <div className="container-max px-4 sm:px-6 lg:px-8">
+    <section id="booking" className="section-padding section-light relative overflow-hidden">
+      {/* Background accents */}
+      <div className="absolute top-20 right-0 w-80 h-80 bg-gradient-to-bl from-gold-100/30 to-transparent rounded-full blur-3xl" />
+      <div className="absolute bottom-20 left-0 w-96 h-96 bg-gradient-to-tr from-navy-100/20 to-transparent rounded-full blur-3xl" />
+
+      <div className="container-max px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <motion.div
-          className="text-center mb-12"
+          className="text-center mb-16"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+          <div className="section-ornament">
+            <span className="text-gold-600 text-xs font-bold tracking-[0.2em] uppercase">Booking</span>
+          </div>
+          <h2 className="text-4xl lg:text-5xl font-black text-navy-800 mb-4 tracking-tight">
             온라인 예약
           </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+          <div className="gold-divider" />
+          <p className="text-lg text-navy-600/70 max-w-3xl mx-auto mt-6 leading-relaxed">
             간편하고 빠른 온라인 예약으로 원하는 시간에 진료를 받으세요
           </p>
         </motion.div>
@@ -171,17 +179,21 @@ const BookingCalendar: React.FC = () => {
         <div className="grid lg:grid-cols-3 gap-8">
           {/* 캘린더 */}
           <motion.div
-            className="lg:col-span-2 glass-card bg-white/90 dark:bg-gray-800/90 rounded-3xl p-6 lg:p-8 shadow-xl"
+            className="lg:col-span-2 bg-white rounded-3xl p-6 lg:p-8 shadow-[0_10px_50px_rgba(27,77,142,0.08)] border border-cream-300/50 relative overflow-hidden"
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
+            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-gold-500 to-transparent" />
+            
             {/* 캘린더 헤더 */}
             <div className="flex items-center justify-between mb-6">
               <div className="flex items-center gap-4">
-                <Calendar className="w-6 h-6 text-primary-600 dark:text-primary-400" />
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
+                <div className="w-10 h-10 bg-gradient-to-br from-navy-600 to-navy-800 rounded-xl flex items-center justify-center shadow-lg">
+                  <Calendar className="w-5 h-5 text-gold-400" />
+                </div>
+                <h3 className="text-2xl font-black text-navy-800">
                   {currentDate.toLocaleDateString('ko-KR', { year: 'numeric', month: 'long' })}
                 </h3>
               </div>
@@ -189,27 +201,27 @@ const BookingCalendar: React.FC = () => {
               <div className="flex items-center gap-2">
                 <motion.button
                   onClick={() => setCurrentDate(new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, 1))}
-                  className="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-700 hover:bg-primary-100 dark:hover:bg-primary-800 flex items-center justify-center transition-colors"
+                  className="w-10 h-10 rounded-full bg-navy-50 hover:bg-navy-600 flex items-center justify-center transition-colors group border border-cream-300/50 hover:border-navy-600"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <ChevronLeft className="w-5 h-5 text-gray-600 dark:text-gray-300" />
+                  <ChevronLeft className="w-5 h-5 text-navy-600 group-hover:text-white" />
                 </motion.button>
                 
                 <motion.button
                   onClick={() => setCurrentDate(new Date())}
-                  className="px-4 py-2 text-sm font-medium text-primary-600 dark:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/30 rounded-lg transition-colors"
+                  className="px-4 py-2 text-sm font-bold text-gold-700 hover:bg-gold-50 rounded-lg transition-colors border border-gold-200/50"
                 >
                   오늘
                 </motion.button>
                 
                 <motion.button
                   onClick={() => setCurrentDate(new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 1))}
-                  className="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-700 hover:bg-primary-100 dark:hover:bg-primary-800 flex items-center justify-center transition-colors"
+                  className="w-10 h-10 rounded-full bg-navy-50 hover:bg-navy-600 flex items-center justify-center transition-colors group border border-cream-300/50 hover:border-navy-600"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <ChevronRight className="w-5 h-5 text-gray-600 dark:text-gray-300" />
+                  <ChevronRight className="w-5 h-5 text-navy-600 group-hover:text-white" />
                 </motion.button>
               </div>
             </div>
@@ -217,8 +229,8 @@ const BookingCalendar: React.FC = () => {
             {/* 요일 헤더 */}
             <div className="grid grid-cols-7 gap-1 mb-4">
               {['일', '월', '화', '수', '목', '금', '토'].map((day, index) => (
-                <div key={day} className={`text-center py-2 text-sm font-medium ${
-                  index === 0 ? 'text-red-500' : index === 6 ? 'text-blue-500' : 'text-gray-600 dark:text-gray-400'
+                <div key={day} className={`text-center py-2 text-sm font-bold ${
+                  index === 0 ? 'text-rose-500' : index === 6 ? 'text-navy-500' : 'text-navy-600/60'
                 }`}>
                   {day}
                 </div>
@@ -242,13 +254,13 @@ const BookingCalendar: React.FC = () => {
                       }
                     }}
                     className={`
-                      aspect-square p-1 rounded-lg text-sm font-medium transition-all duration-200
-                      ${!isCurrentMonth ? 'text-gray-300 dark:text-gray-600 cursor-not-allowed' :
-                        daySchedule.isHoliday ? 'text-red-400 bg-red-50 dark:bg-red-900/20 cursor-not-allowed' :
-                        daySchedule.date < new Date() ? 'text-gray-400 dark:text-gray-500 cursor-not-allowed' :
-                        isSelected ? 'bg-primary-600 text-white shadow-lg' :
-                        isToday ? 'bg-primary-100 dark:bg-primary-900/50 text-primary-600 dark:text-primary-400' :
-                        'hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300'
+                      aspect-square p-1 rounded-xl text-sm font-bold transition-all duration-200
+                      ${!isCurrentMonth ? 'text-navy-200 cursor-not-allowed' :
+                        daySchedule.isHoliday ? 'text-rose-400 bg-rose-50 cursor-not-allowed' :
+                        daySchedule.date < new Date() ? 'text-navy-300 cursor-not-allowed' :
+                        isSelected ? 'bg-gradient-to-br from-navy-600 to-navy-800 text-gold-400 shadow-lg' :
+                        isToday ? 'bg-gold-50 text-gold-700 border border-gold-300' :
+                        'hover:bg-navy-50 text-navy-700'
                       }
                     `}
                     whileHover={isCurrentMonth && !daySchedule.isHoliday && daySchedule.date >= new Date() ? { scale: 1.05 } : {}}
@@ -258,7 +270,7 @@ const BookingCalendar: React.FC = () => {
                     <div className="flex flex-col items-center">
                       <span>{daySchedule.date.getDate()}</span>
                       {isCurrentMonth && !daySchedule.isHoliday && availableSlots > 0 && (
-                        <div className="w-1 h-1 bg-green-400 rounded-full mt-1"></div>
+                        <div className="w-1.5 h-1.5 bg-gold-500 rounded-full mt-1"></div>
                       )}
                     </div>
                   </motion.button>
@@ -277,9 +289,9 @@ const BookingCalendar: React.FC = () => {
           >
             {/* 선택된 날짜 정보 */}
             {selectedDate && (
-              <div className="glass-card bg-white/90 dark:bg-gray-800/90 rounded-2xl p-6 shadow-lg">
-                <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
-                  <CalendarDays className="w-5 h-5 text-primary-600 dark:text-primary-400" />
+              <div className="bg-white rounded-2xl p-6 shadow-[0_4px_20px_rgba(27,77,142,0.06)] border border-cream-300/50">
+                <h4 className="text-lg font-bold text-navy-800 mb-4 flex items-center gap-2">
+                  <CalendarDays className="w-5 h-5 text-gold-600" />
                   {selectedDate.toLocaleDateString('ko-KR', { 
                     year: 'numeric', 
                     month: 'long', 
@@ -295,10 +307,10 @@ const BookingCalendar: React.FC = () => {
                       key={index}
                       onClick={() => slot.available ? setSelectedTimeSlot(slot) : null}
                       className={`
-                        p-3 rounded-lg text-sm font-medium transition-all duration-200
-                        ${!slot.available ? 'bg-gray-100 dark:bg-gray-700 text-gray-400 dark:text-gray-500 cursor-not-allowed' :
-                          selectedTimeSlot?.time === slot.time ? 'bg-primary-600 text-white shadow-lg' :
-                          'bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-600 hover:border-primary-300 dark:hover:border-primary-500'
+                        p-3 rounded-xl text-sm font-bold transition-all duration-200
+                        ${!slot.available ? 'bg-navy-50 text-navy-300 cursor-not-allowed' :
+                          selectedTimeSlot?.time === slot.time ? 'bg-gradient-to-br from-navy-600 to-navy-800 text-gold-400 shadow-lg' :
+                          'bg-white text-navy-700 border border-cream-300/50 hover:border-gold-300/50 hover:shadow-[0_4px_12px_rgba(200,164,94,0.15)]'
                         }
                       `}
                       whileHover={slot.available ? { scale: 1.02 } : {}}
@@ -328,23 +340,26 @@ const BookingCalendar: React.FC = () => {
             )}
 
             {/* 예약 안내 */}
-            <div className="glass-card bg-white/90 dark:bg-gray-800/90 rounded-2xl p-6 shadow-lg">
-              <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">예약 안내</h4>
-              <div className="space-y-3 text-sm text-gray-600 dark:text-gray-400">
+            <div className="bg-white rounded-2xl p-6 shadow-[0_4px_20px_rgba(27,77,142,0.06)] border border-cream-300/50">
+              <h4 className="text-lg font-bold text-navy-800 mb-4 flex items-center gap-2">
+                <Sparkles className="w-5 h-5 text-gold-600" />
+                예약 안내
+              </h4>
+              <div className="space-y-3 text-sm text-navy-600/70">
                 <div className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                  <CheckCircle className="w-4 h-4 text-gold-600 mt-0.5 flex-shrink-0" />
                   <span>진료시간: 월-금 09:00-18:00, 토 09:00-15:00</span>
                 </div>
                 <div className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                  <CheckCircle className="w-4 h-4 text-gold-600 mt-0.5 flex-shrink-0" />
                   <span>점심시간: 12:30-13:30 (예약 불가)</span>
                 </div>
                 <div className="flex items-start gap-2">
-                  <XCircle className="w-4 h-4 text-red-500 mt-0.5 flex-shrink-0" />
+                  <XCircle className="w-4 h-4 text-rose-500 mt-0.5 flex-shrink-0" />
                   <span>일요일 및 공휴일 휴진</span>
                 </div>
                 <div className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                  <CheckCircle className="w-4 h-4 text-gold-600 mt-0.5 flex-shrink-0" />
                   <span>예약 변경 및 취소는 진료 1일 전까지 가능</span>
                 </div>
               </div>
@@ -356,29 +371,31 @@ const BookingCalendar: React.FC = () => {
         <AnimatePresence>
           {showBookingForm && selectedDate && selectedTimeSlot && (
             <motion.div
-              className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50"
+              className="fixed inset-0 bg-navy-900/60 backdrop-blur-sm flex items-center justify-center p-4 z-50"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
             >
               <motion.div
-                className="glass-card bg-white/95 dark:bg-gray-800/95 rounded-3xl p-6 lg:p-8 shadow-2xl w-full max-w-md max-h-[90vh] overflow-y-auto"
+                className="bg-white rounded-3xl p-6 lg:p-8 shadow-[0_30px_80px_rgba(27,77,142,0.2)] w-full max-w-md max-h-[90vh] overflow-y-auto border border-cream-300/50 relative"
                 initial={{ scale: 0.9, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.9, opacity: 0 }}
                 transition={{ duration: 0.3 }}
               >
+                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-gold-500 to-transparent" />
+                
                 <div className="text-center mb-6">
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">예약 신청</h3>
-                  <p className="text-gray-600 dark:text-gray-400">
+                  <h3 className="text-2xl font-black text-navy-800 mb-2">예약 신청</h3>
+                  <p className="text-navy-600/60 font-medium">
                     {selectedDate.toLocaleDateString('ko-KR')} {selectedTimeSlot.time}
                   </p>
                 </div>
 
                 <form onSubmit={handleFormSubmit} className="space-y-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                      <User className="w-4 h-4 inline mr-1" />
+                    <label className="block text-sm font-bold text-navy-700 mb-2">
+                      <User className="w-4 h-4 inline mr-1 text-gold-600" />
                       성함
                     </label>
                     <input
@@ -386,14 +403,14 @@ const BookingCalendar: React.FC = () => {
                       required
                       value={formData.patientName}
                       onChange={(e) => setFormData({...formData, patientName: e.target.value})}
-                      className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors"
+                      className="w-full px-4 py-3 rounded-xl border border-cream-300 bg-cream-50/50 text-navy-800 focus:ring-2 focus:ring-gold-500/30 focus:border-gold-400 transition-colors placeholder:text-navy-300"
                       placeholder="이름을 입력하세요"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                      <Phone className="w-4 h-4 inline mr-1" />
+                    <label className="block text-sm font-bold text-navy-700 mb-2">
+                      <Phone className="w-4 h-4 inline mr-1 text-gold-600" />
                       연락처
                     </label>
                     <input
@@ -401,14 +418,14 @@ const BookingCalendar: React.FC = () => {
                       required
                       value={formData.phoneNumber}
                       onChange={(e) => setFormData({...formData, phoneNumber: e.target.value})}
-                      className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors"
+                      className="w-full px-4 py-3 rounded-xl border border-cream-300 bg-cream-50/50 text-navy-800 focus:ring-2 focus:ring-gold-500/30 focus:border-gold-400 transition-colors placeholder:text-navy-300"
                       placeholder="010-0000-0000"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                      <Mail className="w-4 h-4 inline mr-1" />
+                    <label className="block text-sm font-bold text-navy-700 mb-2">
+                      <Mail className="w-4 h-4 inline mr-1 text-gold-600" />
                       이메일
                     </label>
                     <input
@@ -416,20 +433,20 @@ const BookingCalendar: React.FC = () => {
                       required
                       value={formData.email}
                       onChange={(e) => setFormData({...formData, email: e.target.value})}
-                      className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors"
+                      className="w-full px-4 py-3 rounded-xl border border-cream-300 bg-cream-50/50 text-navy-800 focus:ring-2 focus:ring-gold-500/30 focus:border-gold-400 transition-colors placeholder:text-navy-300"
                       placeholder="example@email.com"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    <label className="block text-sm font-bold text-navy-700 mb-2">
                       진료 종류
                     </label>
                     <select
                       required
                       value={formData.treatmentType}
                       onChange={(e) => setFormData({...formData, treatmentType: e.target.value})}
-                      className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors"
+                      className="w-full px-4 py-3 rounded-xl border border-cream-300 bg-cream-50/50 text-navy-800 focus:ring-2 focus:ring-gold-500/30 focus:border-gold-400 transition-colors"
                     >
                       <option value="">진료 종류를 선택하세요</option>
                       {treatmentTypes.map((type) => (
@@ -439,15 +456,15 @@ const BookingCalendar: React.FC = () => {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                      <FileText className="w-4 h-4 inline mr-1" />
+                    <label className="block text-sm font-bold text-navy-700 mb-2">
+                      <FileText className="w-4 h-4 inline mr-1 text-gold-600" />
                       참고사항 (선택)
                     </label>
                     <textarea
                       value={formData.notes}
                       onChange={(e) => setFormData({...formData, notes: e.target.value})}
                       rows={3}
-                      className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors resize-none"
+                      className="w-full px-4 py-3 rounded-xl border border-cream-300 bg-cream-50/50 text-navy-800 focus:ring-2 focus:ring-gold-500/30 focus:border-gold-400 transition-colors resize-none placeholder:text-navy-300"
                       placeholder="기타 전달사항이나 증상을 입력하세요"
                     />
                   </div>

@@ -16,7 +16,7 @@ const App_Premium: React.FC = () => {
     <SettingsProvider>
       <ToastManager>
         <Router>
-          <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
+            <div className="min-h-screen bg-cream-50">
             <HeaderNew />
             
             <Routes>
@@ -28,6 +28,7 @@ const App_Premium: React.FC = () => {
                     <AboutSection />
                     <ServicesSection />
                     <TestimonialsSection />
+                    <BookingCalendar />
                   </main>
                 } 
               />

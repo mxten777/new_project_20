@@ -1,129 +1,108 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Phone, MessageCircle, Star, Award, Heart, Shield } from 'lucide-react';
-import PremiumButton from './PremiumButton.tsx';
+import { Phone, ArrowDown, Star, Shield, Award, Sparkles } from 'lucide-react';
 
 const HeroSection: React.FC = () => {
   const features = [
-    { icon: Star, text: '20년 경력 전문의' },
-    { icon: Award, text: '최첨단 장비' },
-    { icon: Heart, text: '개인 맞춤 치료' }
+    { icon: Star, text: '20년 경력 전문의', desc: '검증된 전문성' },
+    { icon: Award, text: '최첨단 장비 완비', desc: '3D CT · 디지털 스캐너' },
+    { icon: Shield, text: '개인 맞춤 치료', desc: '1:1 맞춤 상담' }
   ];
 
   return (
     <section id="home" className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Animated Background */}
-      <div className="absolute inset-0 gradient-bg">
-        {/* Animated circles */}
+      {/* Premium Aurora Background */}
+      <div className="absolute inset-0 aurora-bg">
+        {/* Animated Orbs */}
         <motion.div
-          className="absolute top-20 left-10 w-32 h-32 bg-white/10 rounded-full"
+          className="absolute top-20 left-[10%] w-[400px] h-[400px] rounded-full"
+          style={{ background: 'radial-gradient(circle, rgba(200,164,94,0.12) 0%, transparent 70%)' }}
           animate={{ 
-            y: [0, -20, 0],
-            scale: [1, 1.1, 1]
+            x: [0, 50, -30, 0],
+            y: [0, -40, 20, 0],
+            scale: [1, 1.15, 0.95, 1],
           }}
-          transition={{ 
-            duration: 6,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
+          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
         />
         <motion.div
-          className="absolute top-40 right-20 w-24 h-24 bg-white/10 rounded-full"
+          className="absolute bottom-20 right-[5%] w-[500px] h-[500px] rounded-full"
+          style={{ background: 'radial-gradient(circle, rgba(27,77,142,0.15) 0%, transparent 70%)' }}
           animate={{ 
-            y: [0, 20, 0],
-            scale: [1, 0.9, 1]
+            x: [0, -30, 40, 0],
+            y: [0, 30, -20, 0],
+            scale: [1, 0.9, 1.1, 1],
           }}
-          transition={{ 
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
+          transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
         />
         <motion.div
-          className="absolute bottom-40 left-1/3 w-16 h-16 bg-white/10 rounded-full"
-          animate={{ 
-            x: [0, 30, 0],
-            y: [0, -10, 0]
-          }}
-          transition={{ 
-            duration: 10,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-50"
+          style={{ background: 'radial-gradient(circle, rgba(200,164,94,0.08) 0%, transparent 60%)' }}
+          animate={{ scale: [1, 1.2, 1], rotate: [0, 180, 360] }}
+          transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
         />
-        
-        {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-primary-600/90 via-primary-500/80 to-primary-400/70" />
+
+        {/* Gold accent lines */}
+        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold-500/30 to-transparent" />
+        <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold-500/20 to-transparent" />
       </div>
 
       <div className="relative z-10 container-max section-padding text-white">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Content */}
-          <div>
-            {/* Badge */}
+          <div className="text-center lg:text-left">
+            {/* Premium Badge */}
             <motion.div
-              className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 mb-6"
+              className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md rounded-full px-5 py-2.5 mb-8 border border-gold-500/20"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <div className="w-2 h-2 bg-white rounded-full animate-pulse" />
-              <span className="text-sm font-medium">🏥 후암동 새로운 시작</span>
+              <Sparkles className="w-4 h-4 text-gold-400" />
+              <span className="text-sm font-semibold text-gold-300 tracking-wide">Premium Dental Care · Since 2005</span>
             </motion.div>
 
             {/* Main Title */}
             <motion.div
-              className="mb-6"
+              className="mb-8"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <h1 className="mobile-title md:text-5xl lg:text-6xl font-bold leading-tight">
-                <motion.span 
-                  className="block text-white drop-shadow-lg"
-                  initial={{ opacity: 0, x: -50 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 1, delay: 0.3 }}
-                >
-                  박영진치과
-                </motion.span>
-                <motion.span 
-                  className="block text-xl md:text-3xl lg:text-5xl mt-2 text-white/95 drop-shadow-md"
-                  initial={{ opacity: 0, x: -30 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 1, delay: 0.6 }}
-                >
+              <motion.h1 
+                className="mobile-title font-display font-black leading-[1.1] mb-4"
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1, delay: 0.3 }}
+              >
+                <span className="block text-white drop-shadow-lg">박영진치과</span>
+                <span className="block text-2xl md:text-4xl lg:text-5xl mt-3 text-white/90 font-bold">
                   새로운 공간에서
-                </motion.span>
-                <motion.span 
-                  className="block text-xl md:text-3xl lg:text-5xl mt-2 text-yellow-300 drop-shadow-lg font-black"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 1.2, delay: 0.9 }}
-                >
-                  더 나은 치료를
-                </motion.span>
-              </h1>
+                </span>
+                <span className="block text-2xl md:text-4xl lg:text-5xl mt-2 font-black">
+                  <span className="text-gradient-gold inline-block">더 나은 치료를</span>
+                </span>
+              </motion.h1>
             </motion.div>
 
             {/* Subtitle */}
             <motion.div
-              className="mb-8 space-y-3 px-2"
+              className="mb-10 space-y-3"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
             >
-              <p className="mobile-subtitle md:text-xl lg:text-2xl font-semibold text-white drop-shadow-md">
-                20년 경력의 전문의가 직접 진료하는 신뢰할 수 있는 치과
+              <p className="mobile-subtitle text-white/90 font-semibold drop-shadow-md">
+                20년 경력의 전문의가 직접 진료하는
               </p>
-              <p className="mobile-body md:text-lg text-white/90 drop-shadow-sm leading-relaxed">
-                최첨단 디지털 장비와 개인 맞춤형 치료로 건강한 미소를 선사합니다
+              <p className="mobile-body text-white/70 leading-relaxed">
+                최첨단 디지털 장비와 개인 맞춤형 치료로<br className="hidden sm:block" />
+                건강한 미소를 선사합니다
               </p>
             </motion.div>
 
-            {/* Features */}
+            {/* Feature Badges */}
             <motion.div
-              className="flex flex-wrap justify-center lg:justify-start gap-3 mb-8 px-2"
+              className="flex flex-wrap justify-center lg:justify-start gap-3 mb-10"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
@@ -131,118 +110,118 @@ const HeroSection: React.FC = () => {
               {features.map((feature, index) => (
                 <motion.div
                   key={index}
-                  className="flex items-center gap-2 bg-white/25 backdrop-blur-sm rounded-xl px-4 py-3 border border-white/20 shadow-lg"
-                  whileHover={{ scale: 1.05, backgroundColor: 'rgba(255,255,255,0.35)' }}
-                  transition={{ duration: 0.2 }}
+                  className="flex items-center gap-2.5 bg-white/[0.07] backdrop-blur-md rounded-2xl px-4 py-3 border border-white/10 hover:border-gold-500/30 transition-all duration-300"
+                  whileHover={{ scale: 1.03, backgroundColor: 'rgba(255,255,255,0.12)' }}
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.7 + index * 0.1 }}
                 >
-                  <feature.icon className="w-5 h-5 flex-shrink-0" />
-                  <span className="font-semibold text-sm lg:text-base high-contrast-text">{feature.text}</span>
+                  <div className="w-8 h-8 rounded-lg bg-gold-500/20 flex items-center justify-center">
+                    <feature.icon className="w-4 h-4 text-gold-400" />
+                  </div>
+                  <div>
+                    <span className="font-bold text-sm text-white block leading-tight">{feature.text}</span>
+                    <span className="text-[11px] text-white/50">{feature.desc}</span>
+                  </div>
                 </motion.div>
               ))}
             </motion.div>
 
             {/* CTA Buttons */}
             <motion.div
-              className="flex flex-col gap-4 px-4 max-w-md mx-auto lg:max-w-none lg:mx-0 lg:flex-row"
+              className="flex flex-col gap-4 max-w-md mx-auto lg:max-w-none lg:mx-0 lg:flex-row"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.8 }}
+              transition={{ duration: 0.6, delay: 0.9 }}
             >
               <motion.a
                 href="tel:02-712-5678"
-                className="inline-flex items-center justify-center gap-3 bg-white text-primary-600 hover:bg-gray-50 font-bold py-5 px-6 rounded-2xl shadow-2xl transition-all duration-300 w-full lg:w-auto min-h-[60px]"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+                className="inline-flex items-center justify-center gap-3 bg-gradient-to-r from-gold-500 to-gold-400 text-navy-900 font-extrabold py-4 px-8 rounded-2xl shadow-gold-lg transition-all duration-400 w-full lg:w-auto min-h-[60px] text-lg tracking-wide"
+                whileHover={{ scale: 1.03, y: -2 }}
+                whileTap={{ scale: 0.97 }}
               >
-                <Phone className="w-6 h-6 flex-shrink-0" />
+                <Phone className="w-5 h-5" />
                 <div className="text-center lg:text-left">
-                  <div className="text-sm opacity-75 font-medium">지금 바로 예약</div>
-                  <div className="text-lg font-bold tracking-wide">02-712-5678</div>
+                  <div className="text-xs opacity-70 font-semibold">지금 바로 예약</div>
+                  <div className="text-lg font-black tracking-wider">02-712-5678</div>
                 </div>
               </motion.a>
               
-              <PremiumButton
-                variant="glass"
-                size="lg"
-                icon={MessageCircle}
-                className="border-2 border-white text-white hover:bg-white hover:text-primary-600"
+              <motion.a
+                href="#services"
+                className="inline-flex items-center justify-center gap-2 bg-white/10 backdrop-blur-md border-2 border-white/20 text-white hover:bg-white/20 font-bold py-4 px-8 rounded-2xl transition-all duration-300 w-full lg:w-auto min-h-[60px]"
+                whileHover={{ scale: 1.03, y: -2, borderColor: 'rgba(200,164,94,0.5)' }}
+                whileTap={{ scale: 0.97 }}
               >
-                자세히 보기
-              </PremiumButton>
+                진료 안내 보기
+              </motion.a>
             </motion.div>
           </div>
 
-          {/* Visual Element */}
+          {/* Premium Visual */}
           <motion.div
-            className="relative"
-            initial={{ opacity: 0, x: 50 }}
+            className="relative hidden lg:block"
+            initial={{ opacity: 0, x: 60 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, delay: 0.5 }}
           >
             <div className="relative">
               {/* Main Card */}
               <motion.div
-                className="glass-card bg-white/15 rounded-3xl p-8 border border-white/20 floating-animation pulse-glow"
-                animate={{ 
-                  y: [0, -15, 0],
-                  rotateX: [0, 2, 0],
-                  rotateY: [0, -2, 0]
-                }}
-                transition={{ 
-                  duration: 6,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
+                className="relative bg-white/[0.08] backdrop-blur-xl rounded-3xl p-10 border border-white/10 shadow-premium-lg"
+                animate={{ y: [0, -12, 0] }}
+                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
               >
+                {/* Gold accent */}
+                <div className="absolute top-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-gold-500/50 to-transparent" />
+                
                 <div className="text-center">
-                  <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-6">
-                    <Shield className="w-10 h-10 text-primary-500" />
+                  <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-gold-500/20 to-gold-600/10 flex items-center justify-center border border-gold-500/20">
+                    <Sparkles className="w-10 h-10 text-gold-400" />
                   </div>
-                  <h3 className="text-2xl font-bold mb-4">Grand Opening 특별 혜택</h3>
-                  <div className="space-y-3 text-lg">
-                    <div className="flex items-center justify-between">
-                      <span>모든 치료</span>
-                      <span className="text-yellow-300 font-bold text-xl">30% 할인</span>
+                  <h3 className="text-2xl font-bold mb-2 text-white">Grand Opening</h3>
+                  <p className="text-gold-400 font-serif text-lg mb-6">특별 혜택</p>
+                  
+                  <div className="space-y-4">
+                    <div className="bg-white/5 rounded-xl p-4 border border-white/5">
+                      <span className="text-white/70 text-sm">모든 치료</span>
+                      <div className="text-gold-400 font-black text-3xl mt-1">30% 할인</div>
                     </div>
-                    <div className="border-t border-white/30 pt-3">
-                      <span>프리미엄 검진 패키지</span>
+                    <div className="bg-white/5 rounded-xl p-4 border border-white/5">
+                      <span className="text-white/70 text-sm">프리미엄 검진 패키지</span>
+                      <div className="text-white font-bold text-base mt-1">3D CT + 정밀 검진 + 1:1 상담</div>
                     </div>
                   </div>
-                  <div className="mt-6 text-sm opacity-75">
-                    📅 2025년 10월 ~ 12월 (한정 특가)
+                  
+                  <div className="mt-6 pt-4 border-t border-white/10">
+                    <span className="text-white/50 text-sm">📅 한정 특가 · 2025.10 - 12</span>
                   </div>
                 </div>
               </motion.div>
 
-              {/* Floating Elements */}
+              {/* Floating Badge */}
               <motion.div
-                className="absolute -top-4 -right-4 bg-yellow-300 text-primary-900 rounded-full w-16 h-16 flex items-center justify-center font-bold"
-                animate={{ 
-                  rotate: [0, 10, 0, -10, 0],
-                }}
-                transition={{ 
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
+                className="absolute -top-4 -right-4 bg-gradient-to-br from-gold-500 to-gold-600 text-navy-900 rounded-2xl w-20 h-20 flex flex-col items-center justify-center font-black shadow-gold-lg"
+                animate={{ rotate: [0, 5, 0, -5, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
               >
-                NEW
+                <span className="text-[10px] font-bold">OPENING</span>
+                <span className="text-lg leading-none">NEW</span>
               </motion.div>
 
+              {/* Trust Badge */}
               <motion.div
-                className="absolute -bottom-4 -left-4 glass-card bg-white/20 rounded-xl p-4"
-                animate={{ 
-                  scale: [1, 1.05, 1],
-                }}
-                transition={{ 
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
+                className="absolute -bottom-3 -left-3 bg-white/10 backdrop-blur-xl rounded-xl px-5 py-3 border border-white/10"
+                animate={{ scale: [1, 1.03, 1] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
               >
-                <div className="flex items-center gap-2 text-sm">
-                  <Star className="w-4 h-4 fill-yellow-300 text-yellow-300" />
-                  <span className="font-semibold">20년 신뢰</span>
+                <div className="flex items-center gap-2">
+                  <div className="flex -space-x-1">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="w-3.5 h-3.5 fill-gold-400 text-gold-400" />
+                    ))}
+                  </div>
+                  <span className="font-bold text-sm text-white">20년 신뢰</span>
                 </div>
               </motion.div>
             </div>
@@ -252,13 +231,12 @@ const HeroSection: React.FC = () => {
 
       {/* Scroll Indicator */}
       <motion.div
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-        animate={{ y: [0, 10, 0] }}
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2"
+        animate={{ y: [0, 8, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
       >
-        <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-white/70 rounded-full mt-2"></div>
-        </div>
+        <span className="text-white/40 text-xs font-medium tracking-widest uppercase">Scroll</span>
+        <ArrowDown className="w-4 h-4 text-gold-400/60" />
       </motion.div>
     </section>
   );
